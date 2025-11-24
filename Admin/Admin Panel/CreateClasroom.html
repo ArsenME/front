@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Classroom</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../site-enhanced.css">
+</head>
+<body>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-door-open me-2"></i>Create New Classroom</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form id="classroomForm">
+
+                        <!-- BASIC INFO -->
+                        <div class="mb-3">
+                            <label class="form-label">Classroom Name *</label>
+                            <input id="name" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Capacity *</label>
+                            <input id="capacity" type="number" class="form-control" required min="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Location *</label>
+                            <input id="location" class="form-control" required>
+                        </div>
+
+                        <hr>
+
+                        <!-- EQUIPMENT SECTION -->
+                        <h5><i class="fas fa-tools me-2"></i>Equipment</h5>
+
+                        <div class="d-flex gap-2 mb-3">
+                            <input id="equipmentName" class="form-control" placeholder="Equipment name (e.g., Projector)">
+                            <input id="equipmentCount" type="number" class="form-control" placeholder="Count" min="1">
+                            <button type="button" class="btn btn-success" id="addEquipmentBtn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+
+                        <table class="table table-bordered" id="equipmentTable" style="display:none;">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Equipment</th>
+                                    <th>Count</th>
+                                    <th style="width:60px;">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <hr>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-warning text-white">
+                                <i class="fas fa-save me-2"></i>Create Classroom
+                            </button>
+
+                            <button class="btn btn-secondary" onclick="history.back()">Cancel</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+// Add equipment
+document.getElementById("addEquipmentBtn").onclick = function () {
+    const name = document.getElementById("equipmentName").value.trim();
+    const count = document.getElementById("equipmentCount").value;
+
+    if (!name || !count) {
+        alert("Please enter equipment name and count.");
+        return;
+    }
+
+    const table = document.getElementById("equipmentTable");
+    const tbody = table.querySelector("tbody");
+
+    table.style.display = "table";
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${count}</td>
+        <td>
+            <button type="button" class="btn btn-danger btn-sm delete-btn">
+                <i class="fas fa-trash"></i>
+            </button>
+        </td>
+    `;
+
+    tbody.appendChild(row);
+
+    // Clear input fields
+    document.getElementById("equipmentName").value = "";
+    document.getElementById("equipmentCount").value = "";
+};
+
+// Remove equipment row
+document.addEventListener("click", function (e) {
+    if (e.target.closest(".delete-btn")) {
+        e.target.closest("tr").remove();
+
+        const tbody = document.querySelector("#equipmentTable tbody");
+        if (tbody.children.length === 0) {
+            document.getElementById("equipmentTable").style.display = "none";
+        }
+    }
+});
+
+// Submit form
+document.getElementById("classroomForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const classroom = {
+        name: document.getElementById("name").value,
+        capacity: document.getElementById("capacity").value,
+        location: document.getElementById("location").value,
+        equipment: []
+    };
+
+    // Read equipment table
+    document.querySelectorAll("#equipmentTable tbody tr").forEach(row => {
+        const cols = row.querySelectorAll("td");
+        classroom.equipment.push({
+            name: cols[0].innerText,
+            count: cols[1].innerText
+        });
+    });
+
+    console.log("Sending classroom data:", classroom);
+
+    // Send to backend
+    fetch("/CreateClassroom", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(classroom)
+    })
+    .then(res => res.json())
+    .then(() => {
+        alert("Classroom created successfully!");
+        window.location.href = "/Classrooms";
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error creating classroom.");
+    });
+});
+
+// Cancel button
+document.getElementById("cancelBtn").onclick = function () {
+    window.location.href = "/Classrooms";
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../theme-language.js"></script>
+
+
+</body>
+</html>

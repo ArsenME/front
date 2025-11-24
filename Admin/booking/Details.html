@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../site-enhanced.css">
+</head>
+<body>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0"><i class="fas fa-info-circle"></i> Booking Details</h4>
+                    <span class="badge bg-warning" id="statusBadge">Pending</span>
+                </div>
+                <div class="card-body">
+                    <!-- User Information -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-user"></i> Teacher Information</h5>
+                        <p class="mb-1"><strong>Name:</strong> John Lee</p>
+                        <p class="mb-1"><strong>Email:</strong> john.lee@example.com</p>
+                    </div>
+
+                    <!-- Booking Information -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-calendar"></i> Booking Information</h5>
+                        <p class="mb-1"><strong>Type:</strong> Classroom</p>
+                        <p class="mb-1"><strong>Date:</strong> November 18, 2025</p>
+                        <p class="mb-1"><strong>Time:</strong> 10:00 - 12:00</p>
+                        <p class="mb-1"><strong>Status:</strong> <span class="badge bg-warning">Pending</span></p>
+                        <p class="mb-1"><strong>Created:</strong> November 17, 2025 09:00</p>
+                        <p class="mb-1"><strong>Last Updated:</strong> November 17, 2025 10:00</p>
+                    </div>
+
+                    <!-- Classroom Details -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-door-open"></i> Classroom Information</h5>
+                        <p class="mb-1"><strong>Building:</strong> Building 5</p>
+                        <p class="mb-1"><strong>Room Number:</strong> 301</p>
+                        <p class="mb-1"><strong>Capacity:</strong> 30 students</p>
+
+                        <div class="mt-3">
+                            <strong>Available Equipment:</strong>
+                            <div class="mt-2">
+                                <span class="badge bg-success me-2 mb-1">Projector: 2 ✓</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <strong>Additional Notes:</strong>
+                            <p class="text-muted">Room has whiteboard and air conditioning.</p>
+                        </div>
+                    </div>
+
+                    <!-- Course Information -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-book"></i> Course Information (1 Course)</h5>
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-title">Computer Science</h6>
+                                <p class="mb-1"><strong>Course Code:</strong> CS325</p>
+                                <p class="mb-1"><strong>Students Enrolled:</strong> 78</p>
+
+                                <div class="mt-2">
+                                    <strong>Student List:</strong>
+                                    <div class="table-responsive mt-2">
+                                        <table class="table table-sm table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Alice Smith</td>
+                                                    <td>alice@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Bob Johnson</td>
+                                                    <td>bob@example.com</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info mt-2">
+                            <strong>Total Students Across All Courses:</strong> 78
+                        </div>
+                    </div>
+
+
+                    <!-- Notes -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-sticky-note"></i> Additional Notes</h5>
+                        <p>No additional notes.</p>
+                    </div>
+
+                    <!-- Email Status -->
+                    <div class="alert alert-info">
+                        <i class="fas fa-envelope"></i>
+                        Email notifications are pending.
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success" onclick="alert('Booking Approved');">
+                        <i class="fas fa-check"></i> Approve
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#rejectModal">
+                        <i class="fas fa-times"></i> Reject
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" onclick="alert('Booking Deleted');">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                    <a href="./Index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title">Reject Booking</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Reason for Rejection</label>
+                        <textarea class="form-control" id="reason" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Reject Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../theme-language.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

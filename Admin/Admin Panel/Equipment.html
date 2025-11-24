@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Inventory</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../site-enhanced.css">
+
+</head>
+<body>
+    <nav>
+        <nav class="navbar navbar-expand-lg metaclass-navbar">
+            <div class="container">
+                <a class="nav-link" href="../Dashboard.html" >
+                    <span class="brand-text">METACLASS</span>
+                </a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <a class="nav-link" href="../Dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                        
+                        <a class="nav-link" href="../booking/Create.html" >
+                            <i class="fas fa-plus-circle"></i> NewBooking
+                        </a>
+                        
+                        
+                        
+                        <!-- ADMIN DROPDOWN -->
+                        
+                        <!-- ACCOUNT -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i> Account
+                            </a>
+    
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#" id="themeToggle">
+                                        <i class="fas fa-moon"></i> Dark/Light Mode
+                                    </a>
+                                </li>
+    
+                                <li>
+                                    <div class="dropdown-item">
+                                        <i class="fas fa-language"></i>
+                                        <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto ms-2">
+                                            <option value="en">English</option>
+                                            <option value="ru">Русский</option>
+                                            <option value="hy">Հայերեն</option>
+                                        </select>
+                                    </div>
+                                </li>
+    
+                                <li><hr class="dropdown-divider"></li>
+    
+                                <li>
+                                    <a class="dropdown-item" href="../../ChangePassword.html">
+                                        <i class="fas fa-key"></i> ChangePassword
+                                    </a>
+                                </li>
+    
+                                <li><hr class="dropdown-divider"></li>
+    
+                                <li>
+                                    <a class="dropdown-item" href="#" id="logoutBtn">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="#" id="notificationBell">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="notificationCount" style="display:none;">0</span>
+                            </a>
+                        </li>
+    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </nav>
+
+    <div class="container my-5 ">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+    
+            <!-- LEFT SIDE -->
+            <div class="d-flex align-items-center gap-3">
+                <h2><i class="fas fa-tools"></i> Equipment Inventory</h2>
+    
+                
+            </div>
+    
+            <!-- RIGHT SIDE -->
+            
+            <a href="./CreateEquipment.html" class="btn btn-metaclass-orange">
+                <i class="fas fa-user-plus"></i> Add New Equipment
+            </a>
+        </div>
+    
+    
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Total Quantity</th>
+                            <th>Available</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- Example Row 1 -->
+                        <tr>
+                            <td>
+                                <i class="fas fa-box text-primary me-2"></i>
+                                <strong>Projector</strong>
+                            </td>
+                            <td><span class="badge bg-secondary">Electronics</span></td>
+                            <td><span class="badge bg-primary">10</span></td>
+                            <td><span class="badge bg-success">6</span></td>
+                            <td><small class="text-muted">Full HD Projector</small></td>
+                            <td>
+                                <button  style="padding: 0px;border: none;">
+                                    <span class="status-btn active">Active</span>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Example Row 2 -->
+                        <tr>
+                            <td>
+                                <i class="fas fa-box text-primary me-2"></i>
+                                <strong>Lab Microscope</strong>
+                            </td>
+                            <td><span class="badge bg-secondary">Biology</span></td>
+                            <td><span class="badge bg-primary">5</span></td>
+                            <td><span class="badge bg-success">3</span></td>
+                            <td><small class="text-muted">Magnification 40x-1000x</small></td>
+                            <td>
+                                <button style="padding: 0px; border:none">
+                                <span class="status-btn inactive">Inactive</span>
+                            </button>
+                                </td>
+                        </tr>
+                       
+                        <!-- Add more rows here -->
+
+                    </tbody>
+                </table>
+               
+            </div>
+            
+        </div>
+    </div>
+    <div class="d-flex justify-content-end container my-5">
+        <a href="Index.html" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Admin Panel
+    </a>
+</div>
+    </div>
+    
+<script>
+    document.addEventListener("click", function(e) {
+     if (e.target.classList.contains("status-btn")) {
+ 
+         if (e.target.classList.contains("active")) {
+             e.target.classList.remove("active");
+             e.target.classList.add("inactive");
+             e.target.textContent = "Inactive";
+         } 
+         else {
+             e.target.classList.remove("inactive");
+             e.target.classList.add("active");
+             e.target.textContent = "Active";
+         }
+     }
+ });
+ 
+ </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../index.js"></script>
+<script src="../../theme-language.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Your custom CSS (optional) -->
+    <link rel="stylesheet" href="../site-enhanced.css">
+</head>
+<body>
+    <nav>
+        <nav class="navbar navbar-expand-lg metaclass-navbar">
+            <div class="container">
+                <a class="nav-link" href="../Dashboard.html" >
+                    <span class="brand-text">METACLASS</span>
+                </a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+    
+                        
+                        <a class="nav-link" href="../booking/Create.html" >
+                            <i class="fas fa-plus-circle"></i> NewBooking
+                        </a>
+                        
+                     
+                        
+                        <!-- ADMIN DROPDOWN -->
+                        
+                        <!-- ACCOUNT -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i> Account
+                            </a>
+    
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#" id="themeToggle">
+                                        <i class="fas fa-moon"></i> Dark/Light Mode
+                                    </a>
+                                </li>
+    
+                                <li>
+                                    <div class="dropdown-item">
+                                        <i class="fas fa-language"></i>
+                                        <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto ms-2">
+                                            <option value="en">English</option>
+                                            <option value="ru">Русский</option>
+                                            <option value="hy">Հայերեն</option>
+                                        </select>
+                                    </div>
+                                </li>
+    
+                                <li><hr class="dropdown-divider"></li>
+    
+                                <li>
+                                    <a class="dropdown-item" href="../../ChangePassword.html">
+                                        <i class="fas fa-key"></i> ChangePassword
+                                    </a>
+                                </li>
+    
+                                <li><hr class="dropdown-divider"></li>
+    
+                                <li>
+                                    <a class="dropdown-item" href="#" id="logoutBtn">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="#" id="notificationBell">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="notificationCount" style="display:none;">0</span>
+                            </a>
+                        </li>
+    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </nav>
+    <!-- Hero Section -->
+    <div class="hero-section py-5 bg-light mb-4">
+    <div class="container">
+        <h1 class="hero-title">Admin Panel</h1>
+        
+    </div>
+    </div>
+
+<!-- Main Content -->
+<div class="container my-5">
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <a href="users.html" class="admin-action-card d-block text-center p-4 border rounded shadow-sm text-decoration-none">
+                <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                <h4>Manage Users</h4>
+                <p class="text-muted">Add, edit, or remove users and reset passwords</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="../booking/Index.html" class="admin-action-card d-block text-center p-4 border rounded shadow-sm text-decoration-none">
+                <i class="fas fa-calendar-check fa-3x text-warning mb-3"></i>
+                <h4>Manage Bookings</h4>
+                <p class="text-muted">Approve, reject, or delete bookings</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="classrooms.html" class="admin-action-card d-block text-center p-4 border rounded shadow-sm text-decoration-none">
+                <i class="fas fa-door-open fa-3x text-primary mb-3"></i>
+                <h4>Classrooms</h4>
+                <p class="text-muted">View and manage classroom inventory</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="equipment.html" class="admin-action-card d-block text-center p-4 border rounded shadow-sm text-decoration-none">
+                <i class="fas fa-tools fa-3x text-warning mb-3"></i>
+                <h4>Equipment</h4>
+                <p class="text-muted">Manage equipment inventory and availability</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="schedules.html" class="admin-action-card d-block text-center p-4 border rounded shadow-sm text-decoration-none">
+                <i class="fas fa-calendar-week fa-3x text-primary mb-3"></i>
+                <h4>Class Schedules</h4>
+                <p class="text-muted">View and manage predefined class schedules</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="../Dashboard.html" class="admin-action-card d-block text-center p-4 border rounded shadow-sm text-decoration-none">
+                <i class="fas fa-chart-line fa-3x text-warning mb-3"></i>
+                <h4>Dashboard</h4>
+                <p class="text-muted">View system statistics and recent activity</p>
+            </a>
+        </div>
+
+    </div>
+</div>
+<footer class="metaclass-footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 text-white">&copy; 2025 - MetaClass University Booking System</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 text-white-50">Powered by MetaClass Technology</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../theme-language.js"></script>
+<script src="../../index.js"></script>
+
+
+
+    
+</body>
+
+</html>

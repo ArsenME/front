@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - MetaClass</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="Admin/site-enhanced.css" />
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+        <div class="login-card">
+
+            <div class="logo-container">
+                <img src="/Users/HP/Desktop/logo.png" alt="MetaClass Logo" />
+            </div>
+
+            <h2 class="login-title">Welcome Back</h2>
+            <p class="login-subtitle">Sign in to access your account</p>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm">
+
+                <div id="errorSummary" class="alert alert-danger d-none" role="alert"></div>
+
+                <!-- EMAIL -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input id="email" type="email" class="form-control" placeholder="your.email@metaclass.am" />
+                    </div>
+                    <small id="emailError" class="text-danger small"></small>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input id="password" type="password" class="form-control" placeholder="Enter your password" />
+                    </div>
+                    <small id="passwordError" class="text-danger small"></small>
+                </div>
+
+                <!-- REMEMBER ME -->
+                <div class="mb-4 form-check">
+                    <input id="rememberMe" type="checkbox" class="form-check-input" />
+                    <label for="rememberMe" class="form-check-label">
+                        Remember me on this device
+                    </label>
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit" class="btn btn-login w-100">
+                    <i class="fas fa-sign-in-alt me-2"></i> Sign In
+                </button>
+            </form>
+
+            <!-- INFO -->
+            <div class="info-box">
+                <h6><i class="fas fa-info-circle"></i> Default Credentials</h6>
+                <p><strong>Admin:</strong> admin@metaclass.am / Admin@123</p>
+                <p><strong>Teacher:</strong> teacher1@metaclass.am / Teacher@123</p>
+                <small class="text-muted">⚠️ You must change password on first login</small>
+            </div>
+        </div>
+
+        <p class="copyright">
+            &copy; <span id="year"></span> MetaClass University Booking System<br>
+            <small>Powered by MetaClass Technology</small>
+        </p>
+    </div>
+
+<script>
+    // Set year automatically
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // FORM VALIDATION + SUBMIT
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let errors = [];
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Reset errors
+        document.getElementById("errorSummary").classList.add("d-none");
+        document.getElementById("emailError").innerText = "";
+        document.getElementById("passwordError").innerText = "";
+
+        // Email validation
+        if (!email) {
+            errors.push("Email is required");
+            document.getElementById("emailError").innerText = "Required";
+        }
+
+        // Password validation
+        if (!password) {
+            errors.push("Password is required");
+            document.getElementById("passwordError").innerText = "Required";
+        }
+
+        // Show errors
+        if (errors.length > 0) {
+            const errorBox = document.getElementById("errorSummary");
+            errorBox.innerHTML = errors.join("<br>");
+            errorBox.classList.remove("d-none");
+            return;
+        }
+
+        // Simulated login call
+        alert("Login submitted (frontend version)");
+    });
+</script>
+
+</body>
+</html>
