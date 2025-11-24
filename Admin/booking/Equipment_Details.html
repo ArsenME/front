@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Booking Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../site-enhanced.css">
+    
+</head>
+<body>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-metaclass-blue text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0"><i class="fas fa-info-circle"></i> Equipment Booking Details</h4>
+                    <span id="statusBadge" class="badge bg-success">Confirmed</span>
+                </div>
+
+                <div class="card-body">
+                    <!-- User Information -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-user"></i> Teacher Information</h5>
+                        <p class="mb-1"><strong>Name:</strong> John Lee</p>
+                        <p class="mb-1"><strong>Email:</strong> john.lee@example.com</p>
+                    </div>
+
+                    <!-- Booking Information -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-calendar"></i> Booking Information</h5>
+                        <p class="mb-1"><strong>Type:</strong> Equipment</p>
+                        <p class="mb-1"><strong>Date:</strong> November 18, 2025</p>
+                        <p class="mb-1"><strong>Time:</strong> 10:00 - 12:00</p>
+                        <p class="mb-1"><strong>Status:</strong> <span class="badge bg-success">Confirmed</span></p>
+                        <p class="mb-1"><strong>Created:</strong> November 17, 2025 09:00</p>
+                        <p class="mb-1"><strong>Last Updated:</strong> November 17, 2025 10:00</p>
+                    </div>
+
+                    <!-- Equipment Details -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-tools"></i> Equipment Information</h5>
+                        <p class="mb-1"><strong>Equipment Name:</strong> PC</p>
+                        <p class="mb-1"><strong>Quantity Requested:</strong> 3</p>
+                        <p class="mb-1"><strong>Total Available:</strong> 15</p>
+
+                        <p class="mb-1" id="eq-for-classroom-wrapper" style="display:none;">
+                            <strong>For Classroom:</strong> Building 5: Room 301
+                        </p>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="mb-4">
+                        <h5><i class="fas fa-sticky-note"></i> Additional Notes</h5>
+                        <p>No additional notes.</p>
+                    </div>
+
+                    <!-- Email Status -->
+                    <div class="alert alert-info">
+                        <i class="fas fa-envelope"></i>
+                        Email notifications are pending.
+                    </div>
+                </div>
+                    
+                <!-- Actions -->
+                <div class="card-footer">
+                    <button class="btn btn-secondary" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../theme-language.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../booking.js"></script>
+
+</body>
+</html>

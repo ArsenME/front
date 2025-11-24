@@ -97,16 +97,9 @@
 
     <div class="container my-5 ">
         <div class="d-flex justify-content-between align-items-center mb-4">
-    
-            <!-- LEFT SIDE -->
             <div class="d-flex align-items-center gap-3">
                 <h2><i class="fas fa-tools"></i> Equipment Inventory</h2>
-    
-                
             </div>
-    
-            <!-- RIGHT SIDE -->
-            
             <a href="./CreateEquipment.html" class="btn btn-metaclass-orange">
                 <i class="fas fa-user-plus"></i> Add New Equipment
             </a>
@@ -129,14 +122,12 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        <!-- Example Row 1 -->
                         <tr>
                             <td>
                                 <i class="fas fa-box text-primary me-2"></i>
                                 <strong>Projector</strong>
                             </td>
-                            <td><span class="badge bg-secondary">Electronics</span></td>
+                            <td><span class="badge bg-secondary">AV Equipment</span></td>
                             <td><span class="badge bg-primary">10</span></td>
                             <td><span class="badge bg-success">6</span></td>
                             <td><small class="text-muted">Full HD Projector</small></td>
@@ -146,8 +137,21 @@
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Example Row 2 -->
+                        <tr>
+                            <td>
+                                <i class="fas fa-box text-primary me-2"></i>
+                                <strong>PC</strong>
+                            </td>
+                            <td><span class="badge bg-secondary">Computer</span></td>
+                            <td><span class="badge bg-primary">15</span></td>
+                            <td><span class="badge bg-success">11</span></td>
+                            <td><small class="text-muted">MicroComputer</small></td>
+                            <td>
+                                <button  style="padding: 0px;border: none;">
+                                    <span class="status-btn active">Active</span>
+                                </button>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <i class="fas fa-box text-primary me-2"></i>
@@ -163,9 +167,6 @@
                             </button>
                                 </td>
                         </tr>
-                       
-                        <!-- Add more rows here -->
-
                     </tbody>
                 </table>
                
@@ -174,12 +175,24 @@
         </div>
     </div>
     <div class="d-flex justify-content-end container my-5">
-        <a href="Index.html" class="btn btn-secondary">
+        <button class="btn btn-secondary" onclick="history.back()">
         <i class="fas fa-arrow-left"></i> Back to Admin Panel
-    </a>
+    </button>
 </div>
     </div>
     
+    <footer class="metaclass-footer mt-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 text-white">&copy; 2025 - MetaClass University Booking System</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 text-white-50">Powered by MetaClass Technology</p>
+            </div>
+        </div>
+    </div>
+</footer>
 <script>
     document.addEventListener("click", function(e) {
      if (e.target.classList.contains("status-btn")) {
@@ -202,6 +215,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../../index.js"></script>
 <script src="../../theme-language.js"></script>
+<script>
+document.getElementById("logoutBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Remove login session
+    localStorage.removeItem("isLoggedIn");
+
+    // Redirect to Home page (public)
+    window.location.href = "../Home/Index.html";
+});
+</script>
 
 </body>
 </html>

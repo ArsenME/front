@@ -80,6 +80,16 @@
     </footer>
 
     <script>
+// Disable going back after logout
+if (window.history && window.history.pushState) {
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function () {
+        window.history.pushState(null, '', window.location.href);
+    });
+}
+</script>
+
+    <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>

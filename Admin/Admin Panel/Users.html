@@ -112,10 +112,6 @@
         <a href="CreateUser.html" class="btn btn-metaclass-orange">
             <i class="fas fa-user-plus"></i> Add New User
         </a>
-
-        <a href="Index.html" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Back to Admin Panel
-        </a>
     </div>
 
     <div class="card">
@@ -182,7 +178,11 @@
 
         </div>
     </div>
-    
+    <div class="d-flex justify-content-end container my-5">
+        <button class="btn btn-secondary" onclick="history.back()">
+        <i class="fas fa-arrow-left"></i> Back to Admin Panel
+    </button>
+</div>
 </div>
 
 <footer class="metaclass-footer mt-6">
@@ -202,6 +202,17 @@
 <script src = "../../index.js" ></script>
 <script src="../../theme-language.js"></script>
 
+<script>
+document.getElementById("logoutBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Remove login session
+    localStorage.removeItem("isLoggedIn");
+
+    // Redirect to Home page (public)
+    window.location.href = "../Home/Index.html";
+});
+</script>
 
 </body>
 </html>

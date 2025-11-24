@@ -76,6 +76,7 @@
                                     <a class="dropdown-item" href="#" id="logoutBtn">
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
+
                                 </li>
                             </ul>
                         </li>
@@ -172,6 +173,17 @@
 <script src="../../index.js"></script>
 
 
+<script>
+document.getElementById("logoutBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Remove login session
+    localStorage.removeItem("isLoggedIn");
+
+    // Redirect to Home page (public)
+    window.location.href = "../Home/Index.html";
+});
+</script>
 
     
 </body>

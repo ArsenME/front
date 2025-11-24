@@ -1,9 +1,3 @@
- // LOGOUT
- document.getElementById("logoutBtn").addEventListener("click", () => {
-    // JS logout logic
-    alert("Logged out (JS version)");
-});
-
 // ALERT SYSTEM
 function showAlert(type, msg) {
     const area = document.getElementById("alertArea");

@@ -23,18 +23,29 @@ const recentBookings = [
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
-        user: { fullName: "Dr Lee" },
+        user: { fullName: "Dr. Lee" },
         quantity: null
     },
     {
         id: 2,
+        status: "Pending",
+        type: "Classroom",
+        classroom: { roomNumber: "301" },
+        date: "2025-11-18",
+        startTime: "10:00",
+        endTime: "12:00",
+        user: { fullName: "Pr. James" },
+        quantity: null
+    },
+    {
+        id: 3,
         status: "Confirmed",
         type: "Equipment",
         equipment: { name: "PC" },
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
-        user: { fullName: "Dr Lee" },
+        user: { fullName: "Dr. Lee" },
         quantity: 3
     }
 ];
@@ -122,8 +133,8 @@ function renderRecentBookings() {
                             </button>
                         </div>`
                         : `<div class="booking-card-footer">
-                            <button class="btn btn-sm btn-danger" onclick="showcancelModal(${b.id})">
-                                <i class="fas fa-times"></i> Cancel
+                            <button class="btn btn-sm btn-warning" onclick="showcancelModal(${b.id})">
+                                <i class="fas fa-ban"></i> Cancel
                             </button>
                         </div>`
                     }
@@ -164,20 +175,20 @@ if (!isAdmin) {
 // Approve (fake)
 // -------------------------------
 function approve(id) {
-    alert("Approved booking ID: " + id);
+    alert("Booking approved!");
 }
 
 // -------------------------------
 // Reject Modal
 // -------------------------------
-function showRejectModal(id) {
+function showRejectModal(id = 1) {
     document.getElementById("rejectBookingId").value = id;
     new bootstrap.Modal(document.getElementById("rejectModal")).show();
 }
 // -------------------------------
 // Cancel Modal
 // -------------------------------
-function showcancelModal(id) {
+function showcancelModal(id = 1) {
     document.getElementById("rejectBookingId").value = id;
     new bootstrap.Modal(document.getElementById("cancelModal")).show();
 }
@@ -193,10 +204,10 @@ document.getElementById("rejectForm").addEventListener("submit", function (e) {
     alert(`Rejected booking ${id}\nReason: ${reason}`);
 });
  // LOGOUT
-    document.getElementById("logoutBtn").addEventListener("click", () => {
+    //document.getElementById("logoutBtn").addEventListener("click", () => {
         // JS logout logic
-        alert("Logged out (JS version)");
-    });
+      //  alert("Logged out (JS version)");
+    //});
 
     // ALERT SYSTEM
     function showAlert(type, msg) {

@@ -997,7 +997,7 @@ body.login-page {
 }
 
 [data-theme="dark"] .text-warning {
-    color: #ffd43b !important;
+    color: #ff8c00 !important;
 }
 .mc-select select {
     appearance: none;
@@ -1055,4 +1055,19 @@ body.login-page {
 /* When focused, rotate arrow */
 .mc-select select:focus + .mc-select::after {
     transform: translateY(-50%) rotate(180deg);
+}
+
+.code-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3rem;
+}
+
+.code-box input {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 10px;
 }
