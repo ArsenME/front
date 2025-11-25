@@ -363,6 +363,10 @@ main {
     transition: all 0.3s ease;
 }
 
+.card-body {
+    color: var(--text-primary); 
+}
+
     .card:hover {
         transform: translateY(-4px);
         box-shadow: var(--hover-shadow);
@@ -538,6 +542,9 @@ main {
         margin: 0;
     }
 
+    .booking-card-body{
+        color: var(--text-primary);
+    }
 /* ========================================
    Forms
    ======================================== */
@@ -569,6 +576,7 @@ main {
 .table {
     color: var(--text-primary);
     background: var(--bg-primary);
+    border-color: var(--border-color, #444);
 }
 
     .table thead {
@@ -577,6 +585,24 @@ main {
         font-weight: 600;
     }
 
+.table thead th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color, #444);
+}
+
+.table tbody tr {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.table tbody td {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--border-color, #444);
+}
+
+
 .table-hover tbody tr {
     transition: all 0.2s ease;
 }
@@ -584,6 +610,7 @@ main {
     .table-hover tbody tr:hover {
         background: var(--bg-secondary);
         transform: scale(1.01);
+        color: var(--text-primary);
     }
 
 /* ========================================
