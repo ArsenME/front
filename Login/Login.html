@@ -114,10 +114,18 @@
             errorBox.classList.remove("d-none");
             return;
         }
-        localStorage.setItem("isLoggedIn", "true");
+       if( localStorage.setItem("isLoggedIn", "admin@mail.ru")){
+
+        window.location.href = "../Dashboard/Dashboard.html";
+
+       }else{
+        window.location.href = "../User/Dashboard.html";
+       }
 
 
-        window.location.href = "Dashboard/Dashboard.html";
+        
+
+
 
     });
 </script>
@@ -134,9 +142,10 @@
     }
 
     // If user is logged in, redirect away from login page
-    if (localStorage.getItem("isLoggedIn") === "true") {
+    if (localStorage.getItem("isLoggedIn") == "user") {
         window.location.href = "Admin/Dashboard.html";
     }
+    
 </script>
 
 </html>

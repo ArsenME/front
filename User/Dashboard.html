@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MetaClass</title>
+
+    <!-- Bootstrap & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+
+    <link rel="stylesheet" href="../css/site-enhanced.css"> <!-- твои стили -->
+</head>
+<body>
+    <nav>
+        <nav class="navbar navbar-expand-lg metaclass-navbar">
+            <div class="container">
+                <a class="nav-link" href="./Dashboard.html" >
+                    <span class="brand-text">METACLASS</span>
+                </a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+    
+                        <a class="nav-link" href="./Dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                        
+                        <a class="nav-link" href="../booking/Create.html" >
+                            <i class="fas fa-plus-circle"></i> NewBooking
+                        </a>
+                        
+                        <a class="nav-link" href="./indexBook.html" >
+                            <i class="fas fa-calendar-alt"></i> MyBookings
+                        </a>
+                        
+                      
+                       
+    
+                        <!-- ACCOUNT -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i> Account
+                            </a>
+    
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#" id="themeToggle">
+                                        <i class="fas fa-moon"></i> Dark/Light Mode
+                                    </a>
+                                </li>
+    
+                                <li>
+                                    <div class="dropdown-item">
+                                        <i class="fas fa-language"></i>
+                                        <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto ms-2">
+                                            <option value="en">English</option>
+                                            <option value="ru">Русский</option>
+                                            <option value="hy">Հայերեն</option>
+                                        </select>
+                                    </div>
+                                </li>
+    
+                                <li><hr class="dropdown-divider"></li>
+    
+                                <li>
+                                    <a class="dropdown-item" href="../Login/ChangePassword.html">
+                                        <i class="fas fa-key"></i> ChangePassword
+                                    </a>
+                                </li>
+    
+                                <li><hr class="dropdown-divider"></li>
+    
+                                <li>
+                                    <a class="dropdown-item" href="../Home/Index.html" id="logoutBtn">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="#" id="notificationBell">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="notificationCount" style="display:none;">0</span>
+                            </a>
+                        </li>
+    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </nav>
+<!-- HERO -->
+<div class="hero-section">
+    <div class="container">
+        <h1 id="userFullName" class="hero-title"></h1>
+        <p id="dashboardType" class="hero-subtitle"></p>
+    </div>
+</div>
+
+<div class="container my-5">
+
+    <!-- Stats -->
+    <div id="statsRow" class="row g-4 mb-5"></div>
+
+    <!-- Recent Bookings -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-metaclass-blue text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-list"></i> Recent Bookings</h5>
+                    <a href="./indexBook.html" class="btn btn-sm btn-light">View All</a>
+                </div>
+
+                <div class="card-body">
+                    <div id="recentBookingsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Booking (teacher only) -->
+    <div id="teacherCreateBooking"></div>
+
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reject Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="rejectForm">
+                <div class="modal-body">
+                    <input type="hidden" id="rejectBookingId">
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Rejection Reason</label>
+                        <textarea id="reason" class="form-control" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Reject Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Modal -->
+<div class="modal fade" id="cancelModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cancel Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="rejectForm">
+                <div class="modal-body">
+                    <input type="hidden" id="rejectBookingId">
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Reason</label>
+                        <textarea id="reason" class="form-control" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Cancel Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer class="metaclass-footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 text-white">&copy; 2025 - MetaClass University Booking System</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 text-white-50">Powered by MetaClass Technology</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<div class="modal fade" id="notificationModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-metaclass-blue text-white">
+                <h5 class="modal-title"><i class="fas fa-bell"></i> Notifications</h5>
+                <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body" id="notificationList">
+                <p class="text-center text-muted">No notifications</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-secondary" id="markAllRead">Mark All as Read</button>
+                <button class="btn btn-sm btn-metaclass-blue" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JS -->
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/udashboard.js"></script>
+<script src = "../js/index.js"></script>
+<script src="../js/theme-language.js"></script>
+
+
+</body>
+
+
+</html>
