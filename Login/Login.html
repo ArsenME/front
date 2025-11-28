@@ -114,19 +114,18 @@
             errorBox.classList.remove("d-none");
             return;
         }
-       if( localStorage.setItem("isLoggedIn", "admin@mail.ru")){
-
+       localStorage.setItem("isLoggedIn", "true")
+       if(email  =="admin@mail.ru"){
+       
         window.location.href = "../Dashboard/Dashboard.html";
-
        }else{
         window.location.href = "../User/Dashboard.html";
        }
+   
 
+     
 
-        
-
-
-
+    
     });
 </script>
 
