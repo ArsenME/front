@@ -1,17 +1,13 @@
 // -------------------------------
 // Test Data
 // -------------------------------
-const isAdmin = false;
 
-const userFullName = "Sara Jhons";
+const userFullName = "John Lee";
 
 const stats = {
-    totalBookings: 120,
-    pendingBookings: 5,
+    pendingBookings: 1,
     myBookings: 8,
     confirmedBookings: 4,
-    totalClassrooms: 20,
-    totalUsers: 50
 };
 
 const recentBookings = [
@@ -23,29 +19,16 @@ const recentBookings = [
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
-        user: { fullName: "Dr. Lee" },
         quantity: null
     },
     {
         id: 2,
-        status: "Pending",
-        type: "Classroom",
-        classroom: { roomNumber: "301" },
-        date: "2025-11-18",
-        startTime: "10:00",
-        endTime: "12:00",
-        user: { fullName: "Pr. James" },
-        quantity: null
-    },
-    {
-        id: 3,
         status: "Confirmed",
         type: "Equipment",
         equipment: { name: "PC" },
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
-        user: { fullName: "Dr. Lee" },
         quantity: 3
     }
 ];
@@ -54,21 +37,11 @@ document.getElementById("userFullName").innerText = `Welcome, ${userFullName}`;
 
 function renderStats() {
     const container = document.getElementById("statsRow");
-
-    if (isAdmin) {
-        container.innerHTML = `
-            ${createStat("stat-blue", stats.totalBookings, "Total Bookings", "fa-calendar-check")}
-            ${createStat("stat-warning", stats.pendingBookings, "Pending Approval", "fa-clock")}
-            ${createStat("stat-orange", stats.totalClassrooms, "Classrooms", "fa-door-open")}
-            ${createStat("stat-blue", stats.totalUsers, "Users", "fa-users")}
-        `;
-    } else {
         container.innerHTML = `
             ${createStat("stat-blue", stats.myBookings, "My Bookings", "fa-calendar-alt")}
             ${createStat("stat-warning", stats.pendingBookings, "Pending", "fa-clock")}
             ${createStat("stat-orange", stats.confirmedBookings, "Confirmed", "fa-check-circle")}
         `;
-    }
 }
 
 function createStat(color, count, label, icon) {
@@ -117,27 +90,10 @@ function renderRecentBookings() {
                     </div>
 
                     <div class="booking-card-body">
-                        ${isAdmin ? `<p><i class="fas fa-user"></i> <strong>Teacher:</strong> ${b.user.fullName}</p>` : ""}
                         <p><i class="fas fa-calendar"></i> <strong>Date:</strong> ${b.date}</p>
                         <p><i class="fas fa-clock"></i> <strong>Time:</strong> ${b.startTime} - ${b.endTime}</p>
                         ${b.type === "Equipment" ? `<p><i class="fas fa-boxes"></i> <strong>Quantity:</strong> ${b.quantity}</p>` : ""}
                     </div>
-
-                    ${isAdmin && b.status === "Pending" ?
-                        `<div class="booking-card-footer">
-                            <button class="btn btn-sm btn-success" onclick="approve(${b.id})">
-                                <i class="fas fa-check"></i> Approve
-                            </button>
-                            <button class="btn btn-sm btn-danger" onclick="showRejectModal(${b.id})">
-                                <i class="fas fa-times"></i> Reject
-                            </button>
-                        </div>`
-                        : `<div class="booking-card-footer">
-                            <button class="btn btn-sm btn-warning" onclick="showcancelModal(${b.id})">
-                                <i class="fas fa-ban"></i> Cancel
-                            </button>
-                        </div>`
-                    }
                 </div>
             </div>
         `;
@@ -158,7 +114,6 @@ renderRecentBookings();
 // -------------------------------
 // Teacher Create Button
 // -------------------------------
-if (!isAdmin) {
     document.getElementById("teacherCreateBooking").innerHTML = `
         <div class="card text-center py-5">
             <i class="fas fa-plus-circle fa-3x text-metaclass-orange mb-3"></i>
@@ -169,22 +124,6 @@ if (!isAdmin) {
             </a>
         </div>
     `;
-}
-
-// -------------------------------
-// Approve (fake)
-// -------------------------------
-function approve(id) {
-    alert("Booking approved!");
-}
-
-// -------------------------------
-// Reject Modal
-// -------------------------------
-function showRejectModal(id = 1) {
-    document.getElementById("rejectBookingId").value = id;
-    new bootstrap.Modal(document.getElementById("rejectModal")).show();
-}
 // -------------------------------
 // Cancel Modal
 // -------------------------------
@@ -203,11 +142,6 @@ document.getElementById("rejectForm").addEventListener("submit", function (e) {
 
     alert(`Rejected booking ${id}\nReason: ${reason}`);
 });
- // LOGOUT
-    //document.getElementById("logoutBtn").addEventListener("click", () => {
-        // JS logout logic
-      //  alert("Logged out (JS version)");
-    //});
 
     // ALERT SYSTEM
     function showAlert(type, msg) {
@@ -246,6 +180,9 @@ function loadPage(page) {
 }
 
 
+if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "../Home/Index.html";
+}
 
 
 function loadPage(page) {
@@ -257,7 +194,6 @@ fetch(page)
     .then(html => {
         document.getElementById("pageContent").innerHTML = html;
 
-        // reattach data-load listeners inside loaded page
         setupNavigation();
     })
     .catch(err => console.error(err));

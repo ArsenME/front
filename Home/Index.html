@@ -78,20 +78,21 @@
             </div>
         </div>
     </footer>
-
     <script>
-// Disable going back after logout
-if (window.history && window.history.pushState) {
-    window.history.pushState(null, '', window.location.href);
-    window.addEventListener('popstate', function () {
-        window.history.pushState(null, '', window.location.href);
-    });
-}
-</script>
-
-    <script>
-        // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+    for (let i = 0; i < 10; i++) {
+        history.pushState({}, "", location.href);
+    }
+    window.onpopstate = function () {
+        history.pushState({}, "", location.href);
+    };
+    window.onload = function () {
+        setTimeout(() => {
+            history.pushState({}, "", location.href);
+        }, 50);
+    };
     </script>
     <script src="../js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

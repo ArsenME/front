@@ -11,7 +11,6 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
 </head>
 
 <body class="login-page">
@@ -55,6 +54,8 @@
                     <small id="passwordError" class="text-danger small"></small>
                 </div>
 
+                <small id="userError" class="text-danger small"></small>
+
                 <!-- REMEMBER ME -->
                 <div class="mb-4 form-check">
                     <input id="rememberMe" type="checkbox" class="form-check-input" />
@@ -94,6 +95,7 @@
         document.getElementById("errorSummary").classList.add("d-none");
         document.getElementById("emailError").innerText = "";
         document.getElementById("passwordError").innerText = "";
+        document.getElementById("userError").innerText = "";
 
         // Email validation
         if (!email) {
@@ -107,42 +109,44 @@
             document.getElementById("passwordError").innerText = "Required";
         }
 
-        // Show errors
+        // LOGIN CHECK
+        if (email === "admin@polytechnic.am" && password === "admin") {
+            localStorage.setItem("isLoggedIn", "admin");
+            window.location.href = "../Dashboard/Dashboard.html";
+            return;
+        }
+
+        if (email === "user@polytechnic.am" && password === "user") {
+            localStorage.setItem("isLoggedIn", "user");
+            window.location.href = "../User/Dashboard.html";
+            return;
+        }
+
+        // WRONG CREDENTIALS
+        errors.push("Incorrect Email address or password");
+        document.getElementById("userError").innerText = "";
+        document.getElementById("errorSummary").classList.remove("d-none");
+
+        // Show errors if empty fields
         if (errors.length > 0) {
             const errorBox = document.getElementById("errorSummary");
             errorBox.innerHTML = errors.join("<br>");
             errorBox.classList.remove("d-none");
             return;
         }
-       localStorage.setItem("isLoggedIn", "true")
-       if(email  =="admin@mail.ru"){
-       
-        window.location.href = "../Dashboard/Dashboard.html";
-       }else{
-        window.location.href = "../User/Dashboard.html";
-       }
-   
-
-     
-
-    
     });
 </script>
+
 
 </body>
 
 <script>
-    // Disable back button
-    if (window.history && window.history.pushState) {
-        window.history.pushState(null, '', window.location.href);
-        window.addEventListener('popstate', function () {
-            window.history.pushState(null, '', window.location.href);
-        });
-    }
-
     // If user is logged in, redirect away from login page
+    if (localStorage.getItem("isLoggedIn") == "admin") {
+        window.location.href = "../Dashboard/Dashboard.html";
+    }
     if (localStorage.getItem("isLoggedIn") == "user") {
-        window.location.href = "Admin/Dashboard.html";
+        window.location.href = "../User/Dashboard.html";
     }
     
 </script>

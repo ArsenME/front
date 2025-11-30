@@ -1,8 +1,6 @@
 // -------------------------------
 // Test Data
 // -------------------------------
-const isAdmin = true;
-
 const userFullName = "System administrator";
 
 const stats = {
@@ -54,22 +52,12 @@ document.getElementById("userFullName").innerText = `Welcome, ${userFullName}`;
 
 function renderStats() {
     const container = document.getElementById("statsRow");
-
-    if (isAdmin) {
         container.innerHTML = `
             ${createStat("stat-blue", stats.totalBookings, "Total Bookings", "fa-calendar-check")}
             ${createStat("stat-warning", stats.pendingBookings, "Pending Approval", "fa-clock")}
             ${createStat("stat-orange", stats.totalClassrooms, "Classrooms", "fa-door-open")}
             ${createStat("stat-blue", stats.totalUsers, "Users", "fa-users")}
-        `;
-    } else {
-        container.innerHTML = `
-            ${createStat("stat-blue", stats.myBookings, "My Bookings", "fa-calendar-alt")}
-            ${createStat("stat-warning", stats.pendingBookings, "Pending", "fa-clock")}
-            ${createStat("stat-orange", stats.confirmedBookings, "Confirmed", "fa-check-circle")}
-        `;
-    }
-}
+        `;}
 
 function createStat(color, count, label, icon) {
     return `
@@ -117,13 +105,13 @@ function renderRecentBookings() {
                     </div>
 
                     <div class="booking-card-body">
-                        ${isAdmin ? `<p><i class="fas fa-user"></i> <strong>Teacher:</strong> ${b.user.fullName}</p>` : ""}
+                        <p><i class="fas fa-user"></i> <strong>Teacher:</strong> ${b.user.fullName}</p>
                         <p><i class="fas fa-calendar"></i> <strong>Date:</strong> ${b.date}</p>
                         <p><i class="fas fa-clock"></i> <strong>Time:</strong> ${b.startTime} - ${b.endTime}</p>
                         ${b.type === "Equipment" ? `<p><i class="fas fa-boxes"></i> <strong>Quantity:</strong> ${b.quantity}</p>` : ""}
                     </div>
 
-                    ${isAdmin && b.status === "Pending" ?
+                    ${b.status === "Pending" ?
                         `<div class="booking-card-footer">
                             <button class="btn btn-sm btn-success" onclick="approve(${b.id})">
                                 <i class="fas fa-check"></i> Approve
@@ -154,22 +142,6 @@ function statusColor(status) {
 }
 
 renderRecentBookings();
-
-// -------------------------------
-// Teacher Create Button
-// -------------------------------
-if (!isAdmin) {
-    document.getElementById("teacherCreateBooking").innerHTML = `
-        <div class="card text-center py-5">
-            <i class="fas fa-plus-circle fa-3x text-metaclass-orange mb-3"></i>
-            <h4>Need to Book a Resource?</h4>
-            <p class="text-muted">Create a new booking for classrooms or equipment</p>
-            <a href="#" class="btn btn-metaclass-orange btn-lg">
-                <i class="fas fa-calendar-plus"></i> Create New Booking
-            </a>
-        </div>
-    `;
-}
 
 // -------------------------------
 // Approve (fake)
@@ -203,11 +175,6 @@ document.getElementById("rejectForm").addEventListener("submit", function (e) {
 
     alert(`Rejected booking ${id}\nReason: ${reason}`);
 });
- // LOGOUT
-    //document.getElementById("logoutBtn").addEventListener("click", () => {
-        // JS logout logic
-      //  alert("Logged out (JS version)");
-    //});
 
     // ALERT SYSTEM
     function showAlert(type, msg) {
@@ -245,6 +212,9 @@ function loadPage(page) {
         });
 }
 
+if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "../Home/Index.html";
+}
 
 
 

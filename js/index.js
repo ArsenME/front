@@ -34,8 +34,12 @@ fetch(page)
     });
 }
 
-
-
+// Logout system
+document.getElementById("logoutBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "../Home/Index.html";
+});
 
 function loadPage(page) {
 fetch(page)
