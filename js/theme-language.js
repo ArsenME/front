@@ -1,32 +1,19 @@
-// Theme and Language Management
+// Theme + Language Manager (Updated to integrate with JS translations)
 $(document).ready(function () {
-    // Load saved theme
+
+    /* ------------------ THEME ------------------ */
+
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
     updateThemeIcon(savedTheme);
 
-    // Load saved language
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    $('#languageSelect').val(savedLanguage);
-
-    // Theme toggle
     $('#themeToggle').click(function () {
         const currentTheme = $('html').attr('data-theme') || 'light';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
+
         applyTheme(newTheme);
         updateThemeIcon(newTheme);
         saveThemePreference(newTheme);
-    });
-
-    // Language change
-    $('#languageSelect').change(function () {
-        const selectedLanguage = $(this).val();
-        localStorage.setItem('language', selectedLanguage);
-        saveLanguagePreference(selectedLanguage);
-        
-        // Reload page to apply new language
-        window.location.href = window.location.pathname + '?culture=' + selectedLanguage;
     });
 
     function applyTheme(theme) {
@@ -36,11 +23,8 @@ $(document).ready(function () {
 
     function updateThemeIcon(theme) {
         const icon = $('#themeToggle i');
-        if (theme === 'dark') {
-            icon.removeClass('fa-moon').addClass('fa-sun');
-        } else {
-            icon.removeClass('fa-sun').addClass('fa-moon');
-        }
+        icon.removeClass('fa-moon fa-sun');
+        icon.addClass(theme === 'dark' ? 'fa-sun' : 'fa-moon');
     }
 
     function saveThemePreference(theme) {
@@ -51,6 +35,27 @@ $(document).ready(function () {
         });
     }
 
+
+    /* ------------------ LANGUAGE ------------------ */
+
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    $('#languageSelect').val(savedLanguage);
+
+    // Apply language instantly using translations.js
+    applyLanguage(savedLanguage);
+
+    $('#languageSelect').change(function () {
+        const selectedLanguage = $(this).val();
+
+        localStorage.setItem('language', selectedLanguage);
+
+        // Apply translation without reloading page
+        applyLanguage(selectedLanguage);
+
+        // Save preference to server
+        saveLanguagePreference(selectedLanguage);
+    });
+
     function saveLanguagePreference(language) {
         $.post('/Account/SaveLanguagePreference', { language: language }, function (response) {
             if (response.success) {
@@ -58,4 +63,5 @@ $(document).ready(function () {
             }
         });
     }
+
 });
