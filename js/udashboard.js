@@ -35,6 +35,7 @@ const recentBookings = [
     }
 ];
 
+
 // ================================
 // Translation Helper
 // ================================
@@ -43,6 +44,7 @@ function t(key) {
     const lang = localStorage.getItem("language") || "en";
     return key.split(".").reduce((obj, k) => (obj ? obj[k] : null), translations[lang]) || key;
 }
+
 
 // ================================
 // Transliterate User Name
@@ -54,14 +56,14 @@ function getTranslatedName(name) {
 
     const map = lang === "ru" ? transliterate.toRu : transliterate.toHy;
     let result = "";
-    for (let i = 0; i < name.length; i++) {
-        const char = name[i];
+    for (let char of name) {
         const isUpper = char === char.toUpperCase() && char !== char.toLowerCase();
-        let translitChar = map(char.toLowerCase()) || char;
-        result += isUpper ? translitChar.toUpperCase() : translitChar.toLowerCase();
+        let tr = map(char.toLowerCase()) || char;
+        result += isUpper ? tr.toUpperCase() : tr.toLowerCase();
     }
     return result;
 }
+
 
 // ================================
 // Update Welcome Title
@@ -70,9 +72,10 @@ function getTranslatedName(name) {
 function updateWelcomeTitle() {
     const userEl = document.getElementById("userFullName");
     if (!userEl) return;
-    userEl.setAttribute("data-original-name", userFullName);
+
     userEl.textContent = `${t("hero.welcomeUser")}, ${getTranslatedName(userFullName)}`;
 }
+
 
 // ================================
 // Render Stats
@@ -100,18 +103,18 @@ function createStat(color, count, label, icon) {
     `;
 }
 
+
 // ================================
-// Translate Booking Status
+// Booking Status Translation
 // ================================
 
 function translatedStatus(status) {
-    const map = {
-        Pending: t("dashboard.status.pending"),
-        Confirmed: t("dashboard.status.confirmed"),
-        Rejected: t("dashboard.status.rejected"),
-        Cancelled: t("dashboard.status.cancelled")
-    };
-    return map[status] || status;
+    return {
+        "Pending": t("dashboard.status.pending"),
+        "Confirmed": t("dashboard.status.confirmed"),
+        "Rejected": t("dashboard.status.rejected"),
+        "Cancelled": t("dashboard.status.cancelled")
+    }[status] || status;
 }
 
 function statusColor(status) {
@@ -119,6 +122,7 @@ function statusColor(status) {
     if (status === "Pending") return "bg-warning";
     return "bg-danger";
 }
+
 
 // ================================
 // Render Recent Bookings
@@ -155,10 +159,17 @@ function renderRecentBookings() {
                     </div>
 
                     <div class="booking-card-footer">
-                        ${b.status === "Pending"
-                            ? `<button class="btn btn-sm btn-success" onclick="approve(${b.id})"><i class="fas fa-check"></i> ${t("dashboard.approve")}</button>
-                               <button class="btn btn-sm btn-danger" onclick="showRejectModal(${b.id})"><i class="fas fa-times"></i> ${t("dashboard.reject")}</button>`
-                            : `<button class="btn btn-sm btn-warning" onclick="showcancelModal(${b.id})"><i class="fas fa-ban"></i> ${t("dashboard.cancel")}</button>`
+                        ${
+                            b.status === "Pending"
+                                ? `<button class="btn btn-sm btn-success" onclick="approve(${b.id})">
+                                        <i class="fas fa-check"></i> ${t("dashboard.approve")}
+                                   </button>
+                                   <button class="btn btn-sm btn-danger" onclick="showRejectModal(${b.id})">
+                                        <i class="fas fa-times"></i> ${t("dashboard.reject")}
+                                   </button>`
+                                : `<button class="btn btn-sm btn-warning" onclick="showCancelModal(${b.id})">
+                                        <i class="fas fa-ban"></i> ${t("dashboard.cancel")}
+                                   </button>`
                         }
                     </div>
                 </div>
@@ -169,24 +180,35 @@ function renderRecentBookings() {
     container.innerHTML = html;
 }
 
+
 // ================================
 // Approve / Reject / Cancel
 // ================================
 
-function approve(id) { showAlert("success", t("dashboard.alertApproved")); }
-function showRejectModal(id) { document.getElementById("rejectBookingId").value = id; new bootstrap.Modal(document.getElementById("rejectModal")).show(); }
-function showcancelModal(id) { document.getElementById("rejectBookingId").value = id; new bootstrap.Modal(document.getElementById("cancelModal")).show(); }
+function approve(id) {
+    showAlert("success", t("dashboard.alertApproved"));
+}
+
+function showRejectModal(id) {
+    document.getElementById("rejectBookingId").value = id;
+    new bootstrap.Modal(document.getElementById("rejectModal")).show();
+}
+
+function showCancelModal(id) {
+    document.getElementById("rejectBookingId").value = id;
+    new bootstrap.Modal(document.getElementById("cancelModal")).show();
+}
+
 
 // ================================
 // Reject Form
 // ================================
 
-document.getElementById("rejectForm").addEventListener("submit", function(e) {
+document.getElementById("rejectForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    const id = document.getElementById("rejectBookingId").value;
-    const reason = document.getElementById("reason").value;
-    showAlert("danger", `${t("dashboard.alertRejected")} ${id}`);
+    showAlert("danger", t("dashboard.alertRejected"));
 });
+
 
 // ================================
 // Alert System
@@ -199,13 +221,20 @@ function showAlert(type, msg) {
     const text = document.getElementById("alertMessage");
 
     area.style.display = "block";
-    box.className = type === "success" ? "alert alert-success alert-dismissible fade show" : "alert alert-danger alert-dismissible fade show";
-    icon.className = type === "success" ? "fas fa-check-circle" : "fas fa-exclamation-circle";
+    box.className = type === "success"
+        ? "alert alert-success alert-dismissible fade show"
+        : "alert alert-danger alert-dismissible fade show";
+
+    icon.className = type === "success"
+        ? "fas fa-check-circle"
+        : "fas fa-exclamation-circle";
+
     text.innerText = msg;
 }
 
+
 // ================================
-// Teacher Create Button
+// Teacher Create Button (FIXED)
 // ================================
 
 function renderTeacherCreateButton() {
@@ -215,10 +244,11 @@ function renderTeacherCreateButton() {
     container.innerHTML = `
         <div class="card text-center py-5">
             <i class="fas fa-plus-circle fa-3x text-metaclass-orange mb-3"></i>
-            <h4>${t("dashboard.teacherCreate.title")}</h4>
-            <p class="text-muted">${t("dashboard.teacherCreate.subtitle")}</p>
+            <h4 data-translate="dashboard.teacherCreate.title"></h4>
+            <p class="text-muted" data-translate="dashboard.teacherCreate.subtitle"></p>
             <a href="../booking/Create.html" class="btn btn-metaclass-orange btn-lg">
-                <i class="fas fa-calendar-plus"></i> ${t("dashboard.teacherCreate.button")}
+                <i class="fas fa-calendar-plus"></i>
+                <span data-translate="dashboard.teacherCreate.button"></span>
             </a>
         </div>
     `;
@@ -229,6 +259,12 @@ function renderTeacherCreateButton() {
 // Language Switcher
 // ================================
 
+function updateTranslations() {
+    document.querySelectorAll("[data-translate]").forEach(el => {
+        el.textContent = t(el.dataset.translate);
+    });
+}
+
 function setupLanguageSwitcher() {
     const langSelect = document.getElementById("languageSelect");
     if (!langSelect) return;
@@ -236,20 +272,23 @@ function setupLanguageSwitcher() {
     const savedLang = localStorage.getItem("language") || "en";
     langSelect.value = savedLang;
 
+    langSelect.addEventListener("change", e => {
+        const lang = e.target.value;
+        localStorage.setItem("language", lang);
+        refreshPage();
+    });
+
+    refreshPage();
+}
+
+function refreshPage() {
     updateWelcomeTitle();
     renderStats();
     renderRecentBookings();
     renderTeacherCreateButton();
-
-    langSelect.addEventListener("change", e => {
-        const lang = e.target.value;
-        localStorage.setItem("language", lang);
-        updateWelcomeTitle();
-        renderStats();
-        renderRecentBookings();
-        renderTeacherCreateButton();
-    });
+    updateTranslations();
 }
+
 
 // ================================
 // Page Initialization
@@ -260,9 +299,5 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "../Home/Index.html";
         return;
     }
-
     setupLanguageSwitcher();
-    updateWelcomeTitle();
-    renderStats();
-    renderRecentBookings();
 });

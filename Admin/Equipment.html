@@ -3,207 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment Inventory</title>
+    <title data-translate="equipment.title">Equipment Inventory</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/site-enhanced.css">
-
 </head>
 <body>
-    <nav>
-        <nav class="navbar navbar-expand-lg metaclass-navbar">
-            <div class="container">
-                <a class="nav-link" href="../Dashboard/Dashboard.html" >
-                    <span class="brand-text">METACLASS</span>
-                </a>
-    
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <a class="nav-link" href="../Dashboard/Dashboard.html">
-                            <i class="fas fa-home"></i> Dashboard
-                        </a>
-                        
-                        <a class="nav-link" href="../booking/Create.html" >
-                            <i class="fas fa-plus-circle"></i> NewBooking
+    <nav class="navbar navbar-expand-lg metaclass-navbar">
+        <div class="container">
+            <a class="nav-link" href="../Dashboard/Dashboard.html">
+                <span class="brand-text">METACLASS</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <a class="nav-link" href="../Dashboard/Dashboard.html">
+                        <i class="fas fa-home"></i> <span data-translate="nav.dashboard">Dashboard</span>
+                    </a>
+
+                    <a class="nav-link" href="../booking/Create.html">
+                        <i class="fas fa-plus-circle"></i> <span data-translate="nav.newBooking">New Booking</span>
+                    </a>
+
+                    <!-- ACCOUNT -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> <span data-translate="nav.account">Account</span>
                         </a>
 
-                        <!-- ACCOUNT -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle"></i> Account
-                            </a>
-    
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="#" id="themeToggle">
-                                        <i class="fas fa-moon"></i> Dark/Light Mode
-                                    </a>
-                                </li>
-    
-                                <li>
-                                    <div class="dropdown-item">
-                                        <i class="fas fa-language"></i>
-                                        <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto ms-2">
-                                            <option value="en">English</option>
-                                            <option value="ru">Русский</option>
-                                            <option value="hy">Հայերեն</option>
-                                        </select>
-                                    </div>
-                                </li>
-    
-                                <li><hr class="dropdown-divider"></li>
-    
-                                <li>
-                                    <a class="dropdown-item" href="../Login/ChangePassword.html">
-                                        <i class="fas fa-key"></i> ChangePassword
-                                    </a>
-                                </li>
-    
-                                <li><hr class="dropdown-divider"></li>
-    
-                                <li>
-                                    <a class="dropdown-item" href="#" id="logoutBtn">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-    
-                        <li class="nav-item">
-                            <a class="nav-link position-relative" href="#" id="notificationBell">
-                                <i class="fas fa-bell"></i>
-                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="notificationCount" style="display:none;">0</span>
-                            </a>
-                        </li>
-    
-                    </ul>
-                </div>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="#" id="themeToggle">
+                                    <i class="fas fa-moon"></i> <span data-translate="account.themeToggle">Dark/Light Mode</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <div class="dropdown-item">
+                                    <i class="fas fa-language"></i>
+                                    <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto ms-2">
+                                        <option value="en">English</option>
+                                        <option value="ru">Русский</option>
+                                        <option value="hy">Հայերեն</option>
+                                    </select>
+                                </div>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" href="../Login/ChangePassword.html">
+                                    <i class="fas fa-key"></i> <span data-translate="account.changePassword">Change Password</span>
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> <span data-translate="account.logout">Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#" id="notificationBell">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="notificationCount" style="display:none;">0</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
     </nav>
 
-    <div class="container my-5 ">
+    <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div class="d-flex align-items-center gap-3">
-                <h2><i class="fas fa-tools"></i> Equipment Inventory</h2>
+                <h2><i class="fas fa-tools"></i> <span data-translate="equipment.title">Equipment Inventory</span></h2>
             </div>
             <a href="./CreateEquipment.html" class="btn btn-metaclass-orange">
-                <i class="fas fa-user-plus"></i> Add New Equipment
+                <i class="fas fa-user-plus"></i> <span data-translate="equipment.addEquipmentBtn">Add New Equipment</span>
             </a>
         </div>
-    
-    
 
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Total Quantity</th>
-                            <th>Available</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <i class="fas fa-box text-primary me-2"></i>
-                                <strong>Projector</strong>
-                            </td>
-                            <td><span class="badge bg-secondary">AV Equipment</span></td>
-                            <td><span class="badge bg-primary">10</span></td>
-                            <td><span class="badge bg-success">6</span></td>
-                            <td><small class="text-muted">Full HD Projector</small></td>
-                            <td>
-                                <button  class="status-btn active">
-                                    Active
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fas fa-box text-primary me-2"></i>
-                                <strong>PC</strong>
-                            </td>
-                            <td><span class="badge bg-secondary">Computer</span></td>
-                            <td><span class="badge bg-primary">15</span></td>
-                            <td><span class="badge bg-success">11</span></td>
-                            <td><small class="text-muted">MicroComputer</small></td>
-                            <td>
-                                <button  class="status-btn active">
-                                    Active
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fas fa-box text-primary me-2"></i>
-                                <strong>Lab Microscope</strong>
-                            </td>
-                            <td><span class="badge bg-secondary">Biology</span></td>
-                            <td><span class="badge bg-primary">5</span></td>
-                            <td><span class="badge bg-success">3</span></td>
-                            <td><small class="text-muted">Magnification 40x-1000x</small></td>
-                            <td>
-                                <button  class="status-btn inactive">
-                                    Inactive
-                                </button>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th><span data-translate="equipment.name">Name</span></th>
+                                <th><span data-translate="equipment.category">Category</span></th>
+                                <th><span data-translate="equipment.totalQuantity">Total Quantity</span></th>
+                                <th><span data-translate="equipment.available">Available</span></th>
+                                <th><span data-translate="equipment.description">Description</span></th>
+                                <th><span data-translate="equipment.status">Status</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-box text-primary me-2"></i>
+                                    <strong><span data-translate="equipment.projector">Projector</span></strong>
                                 </td>
-                        </tr>
-                    </tbody>
-                </table>
-               
+                                <td><span class="badge bg-secondary"><span data-translate="equipment.avEquipment">AV Equipment</span></span></td>
+                                <td><span class="badge bg-primary">10</span></td>
+                                <td><span class="badge bg-success">6</span></td>
+                                <td><small class="text-muted"><span data-translate="equipment.fullHDProjector">Full HD Projector</span></small></td>
+                                <td>
+                                    <button class="status-btn active"><span data-translate="equipment.active">Active</span></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-box text-primary me-2"></i>
+                                    <strong><span data-translate="equipment.pc">PC</span></strong>
+                                </td>
+                                <td><span class="badge bg-secondary"><span data-translate="equipment.computer">Computer</span></span></td>
+                                <td><span class="badge bg-primary">15</span></td>
+                                <td><span class="badge bg-success">11</span></td>
+                                <td><small class="text-muted"><span data-translate="equipment.microComputer">MicroComputer</span></small></td>
+                                <td>
+                                    <button class="status-btn active"><span data-translate="equipment.active">Active</span></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-box text-primary me-2"></i>
+                                    <strong><span data-translate="equipment.labMicroscope">Lab Microscope</span></strong>
+                                </td>
+                                <td><span class="badge bg-secondary"><span data-translate="equipment.biology">Biology</span></span></td>
+                                <td><span class="badge bg-primary">5</span></td>
+                                <td><span class="badge bg-success">3</span></td>
+                                <td><small class="text-muted"><span data-translate="equipment.microscopeDetails">Magnification 40x-1000x</span></small></td>
+                                <td>
+                                    <button class="status-btn inactive"><span data-translate="equipment.inactive">Inactive</span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            
+        </div>
+
+        <div class="d-flex justify-content-end container my-5">
+            <button class="btn btn-secondary" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i> <span data-translate="equipment.backToAdmin">Back to Admin Panel</span>
+            </button>
         </div>
     </div>
-    <div class="d-flex justify-content-end container my-5">
-        <button class="btn btn-secondary" onclick="history.back()">
-        <i class="fas fa-arrow-left"></i> Back to Admin Panel
-    </button>
-</div>
-    </div>
-    
+
     <footer class="metaclass-footer mt-6">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start">
-                <p class="mb-0 text-white">&copy; 2025 - MetaClass University Booking System</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <p class="mb-0 text-white-50">Powered by MetaClass Technology</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white" data-translate="footer.copyright">&copy; 2025 - MetaClass University Booking System</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-white-50" data-translate="footer.poweredBy">Powered by MetaClass Technology</p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-<script>
+    </footer>
+    <script>
     document.addEventListener("click", function(e) {
-     if (e.target.classList.contains("status-btn")) {
- 
-         if (e.target.classList.contains("active")) {
-             e.target.classList.remove("active");
-             e.target.classList.add("inactive");
-             e.target.textContent = "Inactive";
-         } 
-         else {
-             e.target.classList.remove("inactive");
-             e.target.classList.add("active");
-             e.target.textContent = "Active";
-         }
-     }
- });
- 
- </script>
+        let btn = e.target.closest(".status-btn");
+        if (!btn) return;
+        
+        const lang = localStorage.getItem("language") || "en";
+        const span = btn.querySelector("span");
+        
+        if (btn.classList.contains("active")) {
+            btn.classList.remove("active");
+            btn.classList.add("inactive");
+            span.setAttribute("data-translate", "equipment.inactive");
+            span.textContent = translations[lang].equipment.inactive;
+        } else {
+            btn.classList.remove("inactive");
+            btn.classList.add("active");
+            span.setAttribute("data-translate", "equipment.active");
+            span.textContent = translations[lang].equipment.active;
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        applyTranslations();
+
+        const langSel = document.getElementById("languageSelect");
+        const saved = localStorage.getItem("language") || "en";
+        langSel.value = saved;
+
+        langSel.addEventListener("change", (e) => {
+            localStorage.setItem("language", e.target.value);
+            applyTranslations();
+        });
+    });
+    </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/translations.js"></script>
+<script src="../js/transliteration.js"></script>
+<script src="../js/language.js"></script>
 <script src="../../js/index.js"></script>
 <script src="../../js/theme-language.js"></script>
 

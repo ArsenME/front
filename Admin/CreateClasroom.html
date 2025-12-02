@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Classroom</title>
+    <title data-translate="classrooms.create">Create Classroom</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -16,8 +16,11 @@
     <div class="row justify-content-center">
         <div class="col-lg-7">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-door-open me-2"></i>Create New Classroom</h4>
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-door-open me-2"></i>
+                        <span data-translate="classrooms.create">Create New Classroom</span>
+                    </h4>
                 </div>
 
                 <div class="card-body p-4">
@@ -25,24 +28,27 @@
 
                         <!-- BASIC INFO -->
                         <div class="mb-3">
-                            <label class="form-label">Classroom Name *</label>
+                            <label class="form-label" data-translate="classrooms.name">Classroom Name *</label>
                             <input id="name" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Capacity *</label>
+                            <label class="form-label" data-translate="classrooms.capacity">Capacity *</label>
                             <input id="capacity" type="number" class="form-control" required min="1">
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Location *</label>
+                            <label class="form-label" data-translate="classrooms.location">Location *</label>
                             <input id="location" class="form-control" required>
                         </div>
 
                         <hr>
 
                         <!-- EQUIPMENT SECTION -->
-                        <h5><i class="fas fa-tools me-2"></i>Equipment</h5>
+                        <h5>
+                            <i class="fas fa-tools me-2"></i>
+                            <span data-translate="classrooms.equipment">Equipment</span>
+                        </h5>
 
                         <div class="d-flex gap-2 mb-3">
                             <input id="equipmentName" class="form-control" placeholder="Equipment name (e.g., Projector)">
@@ -55,9 +61,9 @@
                         <table class="table table-bordered" id="equipmentTable" style="display:none;">
                             <thead class="table-light">
                                 <tr>
-                                    <th>Equipment</th>
-                                    <th>Count</th>
-                                    <th style="width:60px;">Remove</th>
+                                    <th data-translate="classrooms.equipment">Equipment</th>
+                                    <th data-translate="classrooms.count">Count</th>
+                                    <th style="width:60px;" data-translate="classrooms.remove">Remove</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -67,10 +73,13 @@
 
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-metaclass-orange">
-                                <i class="fas fa-save me-2"></i>Create Classroom
+                                <i class="fas fa-save me-2"></i>
+                                <span data-translate="classrooms.createBtn">Create Classroom</span>
                             </button>
 
-                            <button class="btn btn-secondary" onclick="history.back()">Cancel</button>
+                            <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                <span data-translate="classrooms.cancel">Cancel</span>
+                            </button>
                         </div>
 
                     </form>
@@ -80,7 +89,20 @@
     </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const langSel = document.getElementById("languageSelect");
+    const saved = localStorage.getItem("language") || "en";
+    langSel.value = saved;
 
+    langSel.addEventListener("change", (e) => {
+        localStorage.setItem("language", e.target.value);
+        if (typeof applyTranslations === "function") applyTranslations();
+    });
+
+    if (typeof applyTranslations === "function") applyTranslations();
+});
+</script>
 <script>
 // Add equipment
 document.getElementById("addEquipmentBtn").onclick = function () {
@@ -88,7 +110,7 @@ document.getElementById("addEquipmentBtn").onclick = function () {
     const count = document.getElementById("equipmentCount").value;
 
     if (!name || !count) {
-        alert("Please enter equipment name and count.");
+        alert(translations[lang].classrooms.alertMissingEquipment);
         return;
     }
 
@@ -158,12 +180,13 @@ document.getElementById("classroomForm").addEventListener("submit", function (e)
     })
     .then(res => res.json())
     .then(() => {
-        alert("Classroom created successfully!");
+        alert(translations[lang].classrooms.alertCreated);
+
         window.location.href = "./Classrooms";
     })
     .catch(err => {
         console.error(err);
-        alert("Error creating classroom.");
+        alert(translations[lang].classrooms.alertError);
     });
 });
 
@@ -172,7 +195,10 @@ document.getElementById("cancelBtn").onclick = function () {
     window.location.href = "./Classrooms";
 };
 </script>
-
+<script src="../js/translations.js"></script>
+<script src="../js/transliteration.js"></script>
+<script src="../js/language.js"></script>
+<script src="../../js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/theme-language.js"></script>
