@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - MetaClass</title>
+    <title data-translate="page.dashboardTitle">Dashboard - MetaClass</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        
-
     <link rel="stylesheet" href="../css/site-enhanced.css">
 </head>
 <body>
@@ -26,30 +25,34 @@
                     <ul class="navbar-nav ms-auto">
     
                         <a class="nav-link" href="./Dashboard.html">
-                            <i class="fas fa-home"></i> Dashboard
+                            <i class="fas fa-home"></i>
+                            <span data-translate="nav.dashboard">Dashboard</span>
                         </a>
                         
                         <a class="nav-link" href="../booking/Create.html" >
-                            <i class="fas fa-plus-circle"></i> NewBooking
+                            <i class="fas fa-plus-circle"></i>
+                            <span data-translate="nav.newBooking">NewBooking</span>
                         </a>
                         
                         <a class="nav-link" href="./indexBook.html" >
-                            <i class="fas fa-calendar-alt"></i> MyBookings
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-translate="nav.myBookings">MyBookings</span>
                         </a>
                         
                       
-                       
     
                         <!-- ACCOUNT -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle"></i> Account
+                                <i class="fas fa-user-circle"></i>
+                                <span data-translate="nav.account">Account</span>
                             </a>
     
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item" href="#" id="themeToggle">
-                                        <i class="fas fa-moon"></i> Dark/Light Mode
+                                        <i class="fas fa-moon"></i>
+                                        <span data-translate="account.themeToggle">Dark/Light Mode</span>
                                     </a>
                                 </li>
     
@@ -68,7 +71,8 @@
     
                                 <li>
                                     <a class="dropdown-item" href="../Login/ChangePassword.html">
-                                        <i class="fas fa-key"></i> ChangePassword
+                                        <i class="fas fa-key"></i>
+                                        <span data-translate="account.changePassword">ChangePassword</span>
                                     </a>
                                 </li>
     
@@ -76,7 +80,8 @@
     
                                 <li>
                                     <a class="dropdown-item" href="../Home/Index.html" id="logoutBtn">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span data-translate="account.logout">Logout</span>
                                     </a>
                                 </li>
                             </ul>
@@ -98,7 +103,7 @@
 <div class="hero-section">
     <div class="container">
         <h1 id="userFullName" class="hero-title"></h1>
-        <p id="dashboardType" class="hero-subtitle"></p>
+        <p id="dashboardType" class="hero-subtitle" data-translate="hero.dashboardType"></p>
     </div>
 </div>
 
@@ -112,8 +117,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header bg-metaclass-blue text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0"><i class="fas fa-list"></i> Recent Bookings</h5>
-                    <a href="./indexBook.html" class="btn btn-sm btn-light">View All</a>
+                    <h5 class="mb-0">
+                        <i class="fas fa-list"></i>
+                        <span data-translate="bookings.recent">Recent Bookings</span>
+                    </h5>
+                    <a href="./indexBook.html" class="btn btn-sm btn-light" data-translate="bookings.viewAll">View All</a>
                 </div>
 
                 <div class="card-body">
@@ -131,20 +139,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cancel Booking</h5>
+                <h5 class="modal-title" data-translate="modal.cancel.title">Cancel Booking</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <form id="rejectForm">
                 <div class="modal-body">
                     <input type="hidden" id="rejectBookingId">
                     <div class="mb-3">
-                        <label for="reason" class="form-label">Reason</label>
+                        <label for="reason" class="form-label" data-translate="modal.cancel.reason">Reason</label>
                         <textarea id="reason" class="form-control" rows="3" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Cancel Booking</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="modal.common.cancel">Cancel</button>
+                    <button type="submit" class="btn btn-danger" data-translate="modal.cancel.btn">Cancel Booking</button>
                 </div>
             </form>
         </div>
@@ -156,10 +164,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start">
-                <p class="mb-0 text-white">&copy; 2025 - MetaClass University Booking System</p>
+                <p class="mb-0 text-white" data-translate="footer.copyright">&copy; 2025 - MetaClass University Booking System</p>
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <p class="mb-0 text-white-50">Powered by MetaClass Technology</p>
+                <p class="mb-0 text-white-50" data-translate="footer.poweredBy">Powered by MetaClass Technology</p>
             </div>
         </div>
     </div>
@@ -171,25 +179,30 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-metaclass-blue text-white">
-                <h5 class="modal-title"><i class="fas fa-bell"></i> Notifications</h5>
+                <h5 class="modal-title">
+                    <i class="fas fa-bell"></i>
+                    <span data-translate="notifications.title">Notifications</span>
+                </h5>
                 <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body" id="notificationList">
-                <p class="text-center text-muted">No notifications</p>
+                <p class="text-center text-muted" data-translate="notifications.none">No notifications</p>
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-sm btn-secondary" id="markAllRead">Mark All as Read</button>
-                <button class="btn btn-sm btn-metaclass-blue" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-secondary" id="markAllRead" data-translate="notifications.markAllRead">Mark All as Read</button>
+                <button class="btn btn-sm btn-metaclass-blue" data-bs-dismiss="modal" data-translate="modal.common.close">Close</button>
             </div>
         </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/translations.js"></script>
+<script src="../js/transliteration.js"></script>
 <script src="../js/udashboard.js"></script>
-<script src = "../js/index.js"></script>
+<script src="../js/index.js"></script>
 <script src="../js/theme-language.js"></script>
 
 

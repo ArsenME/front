@@ -29,13 +29,20 @@ const translations = {
                 pending: "Pending",
                 rejected: "Rejected",
                 cancelled: "Cancelled"
+            },
+
+            myBookingsStat: "My Bookings",
+            pendingStat: "Pending",
+            confirmedStat: "Confirmed",
+
+            teacherCreate: {
+                title: "Need to Book a Resource?",
+                subtitle: "Create a new booking for classrooms or equipment",
+                button: "Create New Booking"
             }
         },
         page: {
             dashboardTitle: "Dashboard - MetaClass"
-        },
-        brand: {
-            name: "METACLASS"
         },
         nav: {
             dashboard: "Dashboard",
@@ -121,13 +128,20 @@ const translations = {
                 pending: "В ожидании",
                 rejected: "Отклонено",
                 cancelled: "Отменено"
+            },
+
+            myBookingsStat: "Мои бронирования",
+            pendingStat: "В ожидании",
+            confirmedStat: "Подтверждено",
+
+            teacherCreate: {
+                title: "Хотите забронировать ресурс?",
+                subtitle: "Создайте новое бронирование аудитории или оборудования",
+                button: "Создать бронирование"
             }
         },
         page: {
             dashboardTitle: "Панель управления - MetaClass"
-        },
-        brand: {
-            name: "МЕТАКЛАСС"
         },
         nav: {
             dashboard: "Панель",
@@ -213,13 +227,20 @@ const translations = {
                 pending: "Սպասող",
                 rejected: "Մերժված",
                 cancelled: "Չեղարկված"
+            },
+
+            myBookingsStat: "Իմ ամրագրումները",
+            pendingStat: "Սպասող",
+            confirmedStat: "Հաստատված",
+
+            teacherCreate: {
+                title: "Ցանկանու՞մ եք գրանցել ռեսուրս։",
+                subtitle: "Ստեղծեք նոր ամրագրում լսարանների կամ սարքավորման համար",
+                button: "Ստեղծել Ամրագրում"
             }
         },
         page: {
             dashboardTitle: "Վահանակ - MetaClass"
-        },
-        brand: {
-            name: "ՄԵՏԱԿԼԱՍ"
         },
         nav: {
             dashboard: "Վահանակ",

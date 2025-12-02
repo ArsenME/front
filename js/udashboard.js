@@ -1,6 +1,6 @@
-// -------------------------------
+// ================================
 // Test Data
-// -------------------------------
+// ================================
 
 const userFullName = "John Lee";
 
@@ -19,6 +19,7 @@ const recentBookings = [
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
+        user: { fullName: "John Lee" },
         quantity: null
     },
     {
@@ -29,78 +30,88 @@ const recentBookings = [
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
+        user: { fullName: "John Lee" },
         quantity: 3
     }
 ];
 
-document.getElementById("userFullName").innerText = `Welcome, ${userFullName}`;
+// ================================
+// Translation Helper
+// ================================
+
+function t(key) {
+    const lang = localStorage.getItem("language") || "en";
+    return key.split(".").reduce((obj, k) => (obj ? obj[k] : null), translations[lang]) || key;
+}
+
+// ================================
+// Transliterate User Name
+// ================================
+
+function getTranslatedName(name) {
+    const lang = localStorage.getItem("language") || "en";
+    if (lang === "en") return name;
+
+    const map = lang === "ru" ? transliterate.toRu : transliterate.toHy;
+    let result = "";
+    for (let i = 0; i < name.length; i++) {
+        const char = name[i];
+        const isUpper = char === char.toUpperCase() && char !== char.toLowerCase();
+        let translitChar = map(char.toLowerCase()) || char;
+        result += isUpper ? translitChar.toUpperCase() : translitChar.toLowerCase();
+    }
+    return result;
+}
+
+// ================================
+// Update Welcome Title
+// ================================
+
+function updateWelcomeTitle() {
+    const userEl = document.getElementById("userFullName");
+    if (!userEl) return;
+    userEl.setAttribute("data-original-name", userFullName);
+    userEl.textContent = `${t("hero.welcomeUser")}, ${getTranslatedName(userFullName)}`;
+}
+
+// ================================
+// Render Stats
+// ================================
 
 function renderStats() {
     const container = document.getElementById("statsRow");
-        container.innerHTML = `
-            ${createStat("stat-blue", stats.myBookings, "My Bookings", "fa-calendar-alt")}
-            ${createStat("stat-warning", stats.pendingBookings, "Pending", "fa-clock")}
-            ${createStat("stat-orange", stats.confirmedBookings, "Confirmed", "fa-check-circle")}
-        `;
+    if (!container) return;
+
+    container.innerHTML = `
+        ${createStat("stat-blue", stats.myBookings, t("dashboard.myBookingsStat"), "fa-calendar-alt")}
+        ${createStat("stat-warning", stats.pendingBookings, t("dashboard.pendingStat"), "fa-clock")}
+        ${createStat("stat-orange", stats.confirmedBookings, t("dashboard.confirmedStat"), "fa-check-circle")}
+    `;
 }
 
 function createStat(color, count, label, icon) {
     return `
         <div class="col-md-4">
             <div class="stat-card ${color}">
-                <div class="stat-icon">
-                    <i class="fas ${icon}"></i>
-                </div>
-                <div class="stat-content">
-                    <h3>${count}</h3>
-                    <p>${label}</p>
-                </div>
+                <div class="stat-icon"><i class="fas ${icon}"></i></div>
+                <div class="stat-content"><h3>${count}</h3><p>${label}</p></div>
             </div>
         </div>
     `;
 }
 
-renderStats();
+// ================================
+// Translate Booking Status
+// ================================
 
-// -------------------------------
-// Render Recent Bookings
-// -------------------------------
-function renderRecentBookings() {
-    const container = document.getElementById("recentBookingsContainer");
-
-    if (recentBookings.length === 0) {
-        container.innerHTML = `<p class="text-center text-muted my-4">No bookings found.</p>`;
-        return;
-    }
-
-    let html = `<div class="row g-3">`;
-
-    recentBookings.forEach(b => {
-        html += `
-            <div class="col-md-6">
-                <div class="booking-card">
-                    <div class="booking-card-header">
-                        <h5>
-                            ${b.type === "Classroom" ?
-                                `<i class="fas fa-door-open text-primary"></i> Room ${b.classroom.roomNumber}` :
-                                `<i class="fas fa-tools text-warning"></i> ${b.equipment.name}`
-                            }
-                        </h5>
-                        <span class="badge ${statusColor(b.status)}">${b.status}</span>
-                    </div>
-
-                    <div class="booking-card-body">
-                        <p><i class="fas fa-calendar"></i> <strong>Date:</strong> ${b.date}</p>
-                        <p><i class="fas fa-clock"></i> <strong>Time:</strong> ${b.startTime} - ${b.endTime}</p>
-                        ${b.type === "Equipment" ? `<p><i class="fas fa-boxes"></i> <strong>Quantity:</strong> ${b.quantity}</p>` : ""}
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-
-    html += `</div>`;
-    container.innerHTML = html;
+function translatedStatus(status) {
+    const map = {
+        Pending: t("dashboard.status.pending"),
+        Confirmed: t("dashboard.status.confirmed"),
+        Rejected: t("dashboard.status.rejected"),
+        Cancelled: t("dashboard.status.cancelled")
+    };
+    return map[status] || status;
 }
 
 function statusColor(status) {
@@ -109,92 +120,149 @@ function statusColor(status) {
     return "bg-danger";
 }
 
-renderRecentBookings();
+// ================================
+// Render Recent Bookings
+// ================================
 
-// -------------------------------
-// Teacher Create Button
-// -------------------------------
-    document.getElementById("teacherCreateBooking").innerHTML = `
-        <div class="card text-center py-5">
-            <i class="fas fa-plus-circle fa-3x text-metaclass-orange mb-3"></i>
-            <h4>Need to Book a Resource?</h4>
-            <p class="text-muted">Create a new booking for classrooms or equipment</p>
-            <a href="../booking/Create.html" class="btn btn-metaclass-orange btn-lg">
-                <i class="fas fa-calendar-plus"></i> Create New Booking
-            </a>
-        </div>
-    `;
-// -------------------------------
-// Cancel Modal
-// -------------------------------
-function showcancelModal(id = 1) {
-    document.getElementById("rejectBookingId").value = id;
-    new bootstrap.Modal(document.getElementById("cancelModal")).show();
+function renderRecentBookings() {
+    const container = document.getElementById("recentBookingsContainer");
+    if (!container) return;
+
+    if (recentBookings.length === 0) {
+        container.innerHTML = `<p class="text-center text-muted my-4">${t("dashboard.noBookings")}</p>`;
+        return;
+    }
+
+    let html = `<div class="row g-3">`;
+    recentBookings.forEach(b => {
+        html += `
+            <div class="col-md-6">
+                <div class="booking-card">
+                    <div class="booking-card-header">
+                        <h5>${
+                            b.type === "Classroom"
+                                ? `<i class="fas fa-door-open text-primary"></i> ${t("dashboard.room")} ${b.classroom.roomNumber}`
+                                : `<i class="fas fa-tools text-warning"></i> ${b.equipment.name}`
+                        }</h5>
+                        <span class="badge ${statusColor(b.status)}">${translatedStatus(b.status)}</span>
+                    </div>
+
+                    <div class="booking-card-body">
+                        <p><i class="fas fa-user"></i> <strong>${t("dashboard.teacher")}:</strong> ${getTranslatedName(b.user.fullName)}</p>
+                        <p><i class="fas fa-calendar"></i> <strong>${t("dashboard.date")}:</strong> ${b.date}</p>
+                        <p><i class="fas fa-clock"></i> <strong>${t("dashboard.time")}:</strong> ${b.startTime} - ${b.endTime}</p>
+                        ${b.type === "Equipment" ? `<p><i class="fas fa-boxes"></i> <strong>${t("dashboard.quantity")}:</strong> ${b.quantity}</p>` : ""}
+                    </div>
+
+                    <div class="booking-card-footer">
+                        ${b.status === "Pending"
+                            ? `<button class="btn btn-sm btn-success" onclick="approve(${b.id})"><i class="fas fa-check"></i> ${t("dashboard.approve")}</button>
+                               <button class="btn btn-sm btn-danger" onclick="showRejectModal(${b.id})"><i class="fas fa-times"></i> ${t("dashboard.reject")}</button>`
+                            : `<button class="btn btn-sm btn-warning" onclick="showcancelModal(${b.id})"><i class="fas fa-ban"></i> ${t("dashboard.cancel")}</button>`
+                        }
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
 }
 
-// -------------------------------
-// Reject (fake)
-// -------------------------------
-document.getElementById("rejectForm").addEventListener("submit", function (e) {
+// ================================
+// Approve / Reject / Cancel
+// ================================
+
+function approve(id) { showAlert("success", t("dashboard.alertApproved")); }
+function showRejectModal(id) { document.getElementById("rejectBookingId").value = id; new bootstrap.Modal(document.getElementById("rejectModal")).show(); }
+function showcancelModal(id) { document.getElementById("rejectBookingId").value = id; new bootstrap.Modal(document.getElementById("cancelModal")).show(); }
+
+// ================================
+// Reject Form
+// ================================
+
+document.getElementById("rejectForm").addEventListener("submit", function(e) {
     e.preventDefault();
     const id = document.getElementById("rejectBookingId").value;
     const reason = document.getElementById("reason").value;
-
-    alert(`Rejected booking ${id}\nReason: ${reason}`);
+    showAlert("danger", `${t("dashboard.alertRejected")} ${id}`);
 });
 
-    // ALERT SYSTEM
-    function showAlert(type, msg) {
-        const area = document.getElementById("alertArea");
-        const box = document.getElementById("alertBox");
-        const icon = document.getElementById("alertIcon");
-        const text = document.getElementById("alertMessage");
+// ================================
+// Alert System
+// ================================
 
-        area.style.display = "block";
+function showAlert(type, msg) {
+    const area = document.getElementById("alertArea");
+    const box = document.getElementById("alertBox");
+    const icon = document.getElementById("alertIcon");
+    const text = document.getElementById("alertMessage");
 
-        if (type === "success") {
-            box.className = "alert alert-success alert-dismissible fade show";
-            icon.className = "fas fa-check-circle";
-        } else {
-            box.className = "alert alert-danger alert-dismissible fade show";
-            icon.className = "fas fa-exclamation-circle";
-        }
+    area.style.display = "block";
+    box.className = type === "success" ? "alert alert-success alert-dismissible fade show" : "alert alert-danger alert-dismissible fade show";
+    icon.className = type === "success" ? "fas fa-check-circle" : "fas fa-exclamation-circle";
+    text.innerText = msg;
+}
 
-        text.innerText = msg;
+// ================================
+// Teacher Create Button
+// ================================
+
+function renderTeacherCreateButton() {
+    const container = document.getElementById("teacherCreateBooking");
+    if (!container) return;
+
+    container.innerHTML = `
+        <div class="card text-center py-5">
+            <i class="fas fa-plus-circle fa-3x text-metaclass-orange mb-3"></i>
+            <h4>${t("dashboard.teacherCreate.title")}</h4>
+            <p class="text-muted">${t("dashboard.teacherCreate.subtitle")}</p>
+            <a href="../booking/Create.html" class="btn btn-metaclass-orange btn-lg">
+                <i class="fas fa-calendar-plus"></i> ${t("dashboard.teacherCreate.button")}
+            </a>
+        </div>
+    `;
+}
+
+
+// ================================
+// Language Switcher
+// ================================
+
+function setupLanguageSwitcher() {
+    const langSelect = document.getElementById("languageSelect");
+    if (!langSelect) return;
+
+    const savedLang = localStorage.getItem("language") || "en";
+    langSelect.value = savedLang;
+
+    updateWelcomeTitle();
+    renderStats();
+    renderRecentBookings();
+    renderTeacherCreateButton();
+
+    langSelect.addEventListener("change", e => {
+        const lang = e.target.value;
+        localStorage.setItem("language", lang);
+        updateWelcomeTitle();
+        renderStats();
+        renderRecentBookings();
+        renderTeacherCreateButton();
+    });
+}
+
+// ================================
+// Page Initialization
+// ================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("isLoggedIn")) {
+        window.location.href = "../Home/Index.html";
+        return;
     }
-   
-// Load page into #pageContent
-function loadPage(page) {
-    fetch(page)
-        .then(res => res.text())
-        .then(html => {
-            document.getElementById("pageContent").innerHTML = html;
 
-            // Load JS file for the page (if exists)
-            if (page === "dashboard.html") {
-                const script = document.createElement("script");
-                script.src = "dashboard.js";
-                document.body.appendChild(script);
-            }
-        });
-}
-
-
-if (!localStorage.getItem("isLoggedIn")) {
-    window.location.href = "../Home/Index.html";
-}
-
-
-function loadPage(page) {
-fetch(page)
-    .then(res => {
-        if (!res.ok) throw new Error("Page not found: " + page);
-        return res.text();
-    })
-    .then(html => {
-        document.getElementById("pageContent").innerHTML = html;
-
-        setupNavigation();
-    })
-    .catch(err => console.error(err));
-}
+    setupLanguageSwitcher();
+    updateWelcomeTitle();
+    renderStats();
+    renderRecentBookings();
+});
