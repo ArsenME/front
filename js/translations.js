@@ -1,7 +1,17 @@
 const translations = {
     en: {
         hero: {
-            welcomeUser: "Welcome"
+            title: "MetaClass - University Booking System",
+            welcomeTitle: "University Resource Booking System",
+            dashboardType: "Manage classrooms and equipment bookings efficiently",
+            welcomeUser: "Welcome",
+            getStarted: "Get Started",
+            easyBooking: "Easy Booking",
+            easyBookingDesc: "Book classrooms and equipment with just a few clicks",
+            secureAccess: "Secure Access",
+            secureAccessDesc: "Role-based access control ensures data security",
+            realTimeNotifications: "Real-time Notifications",
+            realTimeNotificationsDesc: "Get instant updates on your booking status"
         },
         dashboard: {
             totalBookings: "Total Bookings",
@@ -205,12 +215,45 @@ const translations = {
         account: {
             themeToggle: "Dark/Light Mode",
             changePassword: "Change Password",
-            logout: "Logout"
+            logout: "Logout",
+            login: "Login"
         },
-        hero: {
-            welcomeUser: "Welcome",
-            dashboardType: "Dashboard Type"
+        login: {
+            pageTitle: "Login - MetaClass",
+            welcomeBack: "Welcome Back",
+            signInAccess: "Sign in to access your account",
+            emailAddress: "Email Address",
+            emailPlaceholder: "your.email@metaclass.am",
+            password: "Password",
+            passwordPlaceholder: "Enter your password",
+            rememberMe: "Remember me on this device",
+            signIn: "Sign In",
+            forgotPassword: "Forgot password?"
         },
+        forgotPassword: {
+            pageTitle: "Forgot Password",
+            title: "Reset Password",
+            subtitle: "Enter your email address and we will send you a verification code.",
+            emailPlaceholder: "Enter your email",
+            sendCode: "Send Verification Code",
+            backToLogin: "Back to Login"
+        },
+        verifyCode: {
+            pageTitle: "Verify Code",
+            title: "Verify Your Email",
+            subtitle: "We sent a 6-digit verification code to your email.",
+            verifyBtn: "Verify",
+            backToStart: "Back to restart"
+        },
+        newPassword: {
+            pageTitle: "New Password",
+            title: "Create New Password",
+            subtitle: "Your new password must be different from the previous one.",
+            newPasswordPlaceholder: "New Password",
+            confirmPasswordPlaceholder: "Confirm Password",
+            saveBtn: "Save New Password"
+        },
+        
         bookings: {
             recent: "Recent Bookings",
             viewAll: "View All"
@@ -244,7 +287,17 @@ const translations = {
 
     ru: {
         hero: {
-            welcomeUser: "Добро пожаловать"
+            title: "MetaClass - Система бронирования ресурсов университета",
+            welcomeUser: "Добро пожаловать",
+            welcomeTitle: "Система бронирования ресурсов университета",
+            dashboardType: "Эффективное управление бронированием аудиторий и оборудования",
+            getStarted: "Начать",
+            easyBooking: "Простое бронирование",
+            easyBookingDesc: "Бронируйте аудитории и оборудование всего в несколько кликов",
+            secureAccess: "Безопасный доступ",
+            secureAccessDesc: "Ролевой доступ обеспечивает безопасность данных",
+            realTimeNotifications: "Уведомления в реальном времени",
+            realTimeNotificationsDesc: "Получайте мгновенные обновления о статусе бронирования"
         },
         dashboard: {
             totalBookings: "Всего бронирований",
@@ -447,12 +500,45 @@ const translations = {
         account: {
             themeToggle: "Темная/Светлая тема",
             changePassword: "Изменить пароль",
-            logout: "Выйти"
+            logout: "Выйти",
+            login: "Вход"
         },
-        hero: {
-            welcomeUser: "Добро пожаловать",
-            dashboardType: "Тип панели"
+        login: {
+            pageTitle: "Вход - MetaClass",
+            welcomeBack: "С возвращением",
+            signInAccess: "Войдите, чтобы получить доступ к аккаунту",
+            emailAddress: "Электронная почта",
+            emailPlaceholder: "ваш.email@metaclass.am",
+            password: "Пароль",
+            passwordPlaceholder: "Введите ваш пароль",
+            rememberMe: "Запомнить меня на этом устройстве",
+            signIn: "Войти",
+            forgotPassword: "Забыли пароль?"
         },
+        forgotPassword: {
+            pageTitle: "Восстановление пароля",
+            title: "Сброс пароля",
+            subtitle: "Введите ваш email, и мы отправим вам код подтверждения.",
+            emailPlaceholder: "Введите ваш email",
+            sendCode: "Отправить код подтверждения",
+            backToLogin: "Вернуться на страницу входа"
+        },
+        verifyCode: {
+            pageTitle: "Подтверждение кода",
+            title: "Подтвердите ваш email",
+            subtitle: "Мы отправили 6-значный код подтверждения на вашу почту.",
+            verifyBtn: "Подтвердить",
+            backToStart: "Вернуться к началу"
+        },
+        newPassword: {
+            pageTitle: "Новый пароль",
+            title: "Создать новый пароль",
+            subtitle: "Ваш новый пароль должен отличаться от предыдущего.",
+            newPasswordPlaceholder: "Новый пароль",
+            confirmPasswordPlaceholder: "Подтвердите пароль",
+            saveBtn: "Сохранить новый пароль"
+        },
+        
         bookings: {
             recent: "Недавние бронирования",
             viewAll: "Посмотреть все"
@@ -486,7 +572,17 @@ const translations = {
 
     hy: {
         hero: {
-            welcomeUser: "Բարի գալուստ"
+            title: "MetaClass - Համալսարանի ռեսուրսների ամրագրման համակարգ",
+            welcomeUser: "Բարի գալուստ",
+            welcomeTitle: "Համալսարանի ռեսուրսների ամրագրման համակարգ",
+            dashboardType: "Դասասենյակների և սարքավորումների ամրագրումների արդյունավետ կառավարում",
+            getStarted: "Սկսել",
+            easyBooking: "Հեշտ ամրագրում",
+            easyBookingDesc: "Ամրագրեք դասասենյակները և սարքավորումները մի քանի կտտոցով",
+            secureAccess: "Ապահով մուտք",
+            secureAccessDesc: "Դերը հիմնված մուտքը ապահովում է տվյալների անվտանգությունը",
+            realTimeNotifications: "Պատասխանների ծանուցումներ",
+            realTimeNotificationsDesc: "Ստացեք անմիջական տեղեկություններ ձեր ամրագրումների մասին"
         },
         dashboard: {
             totalBookings: "Ընդհանուր ամրագրումներ",
@@ -692,12 +788,45 @@ const translations = {
         account: {
             themeToggle: "Մուգ/Լուսավոր ռեժիմ",
             changePassword: "Փոխել գաղտնաբառը",
-            logout: "Դուրս գալ"
+            logout: "Դուրս գալ",
+            login: "Մուտք"
         },
-        hero: {
-            welcomeUser: "Բարի գալուստ",
-            dashboardType: "Վահանակի Տեսակը"
+        login: {
+            pageTitle: "Մուտք - MetaClass",
+            welcomeBack: "Բարի վերադարձ",
+            signInAccess: "Մուտք գործեք՝ ձեր հաշիվը հասանելի դարձնելու համար",
+            emailAddress: "Էլ․ փոստ",
+            emailPlaceholder: "ձեր.email@metaclass.am",
+            password: "Գաղտնաբառ",
+            passwordPlaceholder: "Մուտքագրեք ձեր գաղտնաբառը",
+            rememberMe: "Հիշել ինձ այս սարքում",
+            signIn: "Մուտք գործել",
+            forgotPassword: "Մոռացել եք գաղտնաբառը?"
         },
+        forgotPassword: {
+            pageTitle: "Գաղտնաբառի վերականգնում",
+            title: "Վերականգնել գաղտնաբառը",
+            subtitle: "Մուտքագրեք ձեր էլ․ փոստը, և մենք կուղարկենք հաստատման կոդը։",
+            emailPlaceholder: "Մուտքագրեք ձեր էլ․ փոստը",
+            sendCode: "Ուղարկել հաստատման կոդը",
+            backToLogin: "Վերադառնալ մուտքի էջ"
+        },
+        verifyCode: {
+            pageTitle: "Հաստատման կոդ",
+            title: "Հաստատեք ձեր էլ․ փոստը",
+            subtitle: "Մենք ուղարկել ենք 6-հատորոշիչ հաստատման կոդ ձեր էլ․ փոստին։",
+            verifyBtn: "Հաստատել",
+            backToStart: "Վերադառնալ սկզբին"
+        },
+        newPassword: {
+            pageTitle: "Նոր Գաղտնաբառ",
+            title: "Ստեղծել նոր գաղտնաբառ",
+            subtitle: "Ձեր նոր գաղտնաբառը պետք է տարբերվի նախորդից։",
+            newPasswordPlaceholder: "Նոր գաղտնաբառ",
+            confirmPasswordPlaceholder: "Հաստատեք գաղտնաբառը",
+            saveBtn: "Պահել նոր գաղտնաբառը"
+        },
+        
         bookings: {
             recent: "Վերջին Ամրագրումները",
             viewAll: "Դիտել բոլորը"

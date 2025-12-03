@@ -3,33 +3,77 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MetaClass - University Booking System</title>
+    <title><span data-translate="hero.title">MetaClass - University Booking System</span></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/site-enhanced.css"/>
-    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg metaclass-navbar">
         <div class="container">
+
+            <!-- LOGO -->
             <a class="navbar-brand" href="index.html">
                 <span class="brand-text">METACLASS</span>
             </a>
-            <div class="ms-auto">
+
+            <!-- RIGHT SIDE BLOCK (ACCOUNT + LOGIN) -->
+            <div class="ms-auto d-flex align-items-center gap-4">
+
+                <!-- ACCOUNT DROPDOWN -->
+                <ul class="navbar-nav d-flex align-items-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-tools"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <!-- DARK / LIGHT MODE -->
+                            <li>
+                                <a class="dropdown-item" href="#" id="themeToggle">
+                                    <i class="fas fa-moon"></i>
+                                    <span data-translate="account.themeToggle">Dark/Light Mode</span>
+                                </a>
+                            </li>
+
+                            <!-- LANGUAGE SELECTOR -->
+                            <li>
+                                <div class="dropdown-item">
+                                    <i class="fas fa-language"></i>
+                                    <select id="languageSelect"
+                                            class="form-select form-select-sm d-inline-block w-auto ms-2">
+                                        <option value="en">English</option>
+                                        <option value="ru">Русский</option>
+                                        <option value="hy">Հայերեն</option>
+                                    </select>
+                                </div>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- LOGIN BUTTON -->
                 <a href="../Login/Login.html" class="btn btn-light">
-                    <i class="fas fa-sign-in-alt"></i> Login
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span data-translate="account.login">Login</span>
                 </a>
+
             </div>
         </div>
     </nav>
-
+    
     <div class="hero-section">
         <div class="container text-center">
             <img src="../logo.png" alt="MetaClass Logo" style="max-width: 250px; margin-bottom: 5rem;" />
-            <h1 class="hero-title">University Resource Booking System</h1>
-            <p class="hero-subtitle">Manage classrooms and equipment bookings efficiently</p>
+            <h1 class="hero-title"><span data-translate="hero.welcomeTitle">University Resource Booking System</span></h1>
+            <p class="hero-subtitle"><span data-translate="hero.dashboardType">Manage classrooms and equipment bookings efficiently</span></p>
             <a href="../Login/Login.html" class="btn btn-metaclass-orange btn-lg mt-3">
-                <i class="fas fa-sign-in-alt"></i> Get Started
+                <i class="fas fa-sign-in-alt"></i> 
+                <span data-translate="hero.getStarted">Get Started</span>
             </a>
         </div>
     </div>
@@ -41,8 +85,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
-                    <h4>Easy Booking</h4>
-                    <p class="text-muted">Book classrooms and equipment with just a few clicks</p>
+                    <h4><span data-translate="hero.easyBooking">Easy Booking</span></h4>
+                    <p class="text-muted"><span data-translate="hero.easyBookingDesc">Book classrooms and equipment with just a few clicks</span></p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -50,8 +94,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h4>Secure Access</h4>
-                    <p class="text-muted">Role-based access control ensures data security</p>
+                    <h4><span data-translate="hero.secureAccess">Secure Access</span></h4>
+                    <p class="text-muted"><span data-translate="hero.secureAccessDesc">Role-based access control ensures data security</span></p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -59,8 +103,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-bell"></i>
                     </div>
-                    <h4>Real-time Notifications</h4>
-                    <p class="text-muted">Get instant updates on your booking status</p>
+                    <h4><span data-translate="hero.realTimeNotifications">Real-time Notifications</span></h4>
+                    <p class="text-muted"><span data-translate="hero.realTimeNotificationsDesc">Get instant updates on your booking status</span></p>
                 </div>
             </div>
         </div>
@@ -70,15 +114,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0 text-white">&copy; <span id="year"></span> - MetaClass University Booking System</p>
+                    <p class="mb-0 text-white"><span id="year"></span> - <span data-translate="footer.copyright">MetaClass University Booking System</span></p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0 text-white-50">Powered by MetaClass Technology</p>
+                    <p class="mb-0 text-white-50"><span data-translate="footer.poweredBy">Powered by MetaClass Technology</span></p>
                 </div>
             </div>
         </div>
     </footer>
-    <script>
+
+  <script>
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
     <script>
@@ -94,7 +139,12 @@
         }, 50);
     };
     </script>
-    <script src="../js/index.js"></script>
+    
+    <script src="../js/translations.js"></script>
+    <script src="../js/transliteration.js"></script>
+    <script src="../js/theme-language.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
