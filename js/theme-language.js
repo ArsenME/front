@@ -1,4 +1,3 @@
-// Theme + Language Manager (Updated to integrate with JS translations)
 $(document).ready(function () {
 
     /* ------------------ THEME ------------------ */
