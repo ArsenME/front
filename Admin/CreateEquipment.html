@@ -55,38 +55,9 @@
     </div>
 </div>
 
-<script>
-    const form = document.getElementById("equipmentForm");
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
 
-        const equipment = {
-            name: document.getElementById("name").value,
-            type: document.getElementById("type").value,
-            quantity: parseInt(document.getElementById("quantity").value)
-        };
 
-        console.log("New Equipment:", equipment);
-        const lang = localStorage.getItem("language") || "en";
-        alert(translations[lang].equipment.alertCreated);
-        window.location.href = "Equipment.html";
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const langSel = document.getElementById("languageSelect");
-        const saved = localStorage.getItem("language") || "en";
-        langSel.value = saved;
-        applyTranslations();
-
-        langSel.addEventListener("change", (e) => {
-            localStorage.setItem("language", e.target.value);
-            applyTranslations();
-        });
-    });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -95,6 +66,7 @@
 <script src="../js/language.js"></script>
 <script src="../../js/index.js"></script>
 <script src="../js/theme-language.js"></script>
+<script src="../js/adminPanelAlerts.js"></script>
 
 </body>
 </html>

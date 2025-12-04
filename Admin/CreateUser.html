@@ -78,63 +78,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/translations.js"></script>
 
-<script>
-    // Language Switcher
-    const languageSwitcher = document.getElementById('languageSwitcher');
 
-    function translatePage(lang) {
-        document.querySelectorAll('[data-translate]').forEach(el => {
-            const keys = el.getAttribute('data-translate').split('.');
-            let text = translations[lang];
-            keys.forEach(k => {
-                if (text) text = text[k];
-            });
-            if (text) el.innerText = text;
-        });
-    }
-
-    languageSwitcher.addEventListener('change', function() {
-        translatePage(this.value);
-    });
-
-    // Initialize default language
-    translatePage('en');
-
-    // Form Validation
-    document.getElementById("createUserForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const errors = [];
-
-        const firstName = document.getElementById("firstName").value.trim();
-        const lastName = document.getElementById("lastName").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const role = document.getElementById("role").value;
-
-        if (!firstName) errors.push(translations[languageSwitcher.value].user.firstName + " is required.");
-        if (!lastName) errors.push(translations[languageSwitcher.value].user.lastName + " is required.");
-        if (!email) errors.push(translations[languageSwitcher.value].user.email + " is required.");
-        if (!password) errors.push(translations[languageSwitcher.value].user.password || "Password is required.");
-
-        const errorBox = document.getElementById("validationErrors");
-
-        if (errors.length > 0) {
-            errorBox.classList.remove("d-none");
-            errorBox.innerHTML = errors.join("<br>");
-            return;
-        } else {
-            errorBox.classList.add("d-none");
-        }
-
-        console.log({ firstName, lastName, email, password, role });
-
-        alert(translations[languageSwitcher.value].user.alertUpdated);
-    });
-</script>
 
 <script src="../js/language.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/theme-language.js"></script>
+<script src="../js/adminPanelAlerts.js"></script>
 </body>
 </html>

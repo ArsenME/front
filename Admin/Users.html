@@ -183,38 +183,6 @@
     <script src="../js/language.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/theme-language.js"></script>
-    <script>
-        function getTranslatedName(name) {
-            const lang = localStorage.getItem("language") || "en";
-            if (lang === "en") return name;
-
-            const map = lang === "ru" ? transliterate.toRu : transliterate.toHy;
-
-            let result = "";
-            for (let i = 0; i < name.length; i++) {
-                const char = name[i];
-                const isUpper = char === char.toUpperCase() && char !== char.toLowerCase();
-                let translitChar = map(char.toLowerCase()) || char;
-                result += isUpper ? translitChar.toUpperCase() : translitChar.toLowerCase();
-            }
-            return result;
-        }
-
-        function applyUserNames() {
-            document.querySelectorAll(".user-name").forEach(el => {
-                const original = el.getAttribute("data-name");
-                el.textContent = getTranslatedName(original);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            applyUserNames();
-
-            const languageSelect = document.getElementById("languageSelect");
-            if (languageSelect) {
-                languageSelect.addEventListener("change", () => applyUserNames());
-            }
-        });
-    </script>
+    <script src="../js/adminPanelAlerts.js"></script>
 </body>
 </html>
