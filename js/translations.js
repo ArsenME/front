@@ -1,4 +1,4 @@
-const translations = {
+    const translations = {
     en: {
         hero: {
             title: "MetaClass - University Booking System",
@@ -194,7 +194,7 @@ const translations = {
             building: "Building",
             allBuildings: "All Buildings",
             mainBuilding: "Main Building",
-            building5: "Building 5",
+            building5: "Building №5",
             minCapacity: "Min Capacity",
             requiredEquipment: "Required Equipment",
             anyEquipment: "Any Equipment",
@@ -208,6 +208,7 @@ const translations = {
             notes: "Notes",
             createBookingBtn: "Create Booking",
             cancelBtn: "Cancel",
+            equipmentSelect : "Select Equipment",
             myBookings: {
                 pageTitle: "My Bookings",
                 brandText: "METACLASS",
@@ -255,7 +256,7 @@ const translations = {
         },
         login: {
             pageTitle: "Login - MetaClass",
-            welcomeBack: "Welcome Back",
+            welcomeBack: "Welcome",
             signInAccess: "Sign in to access your account",
             emailAddress: "Email Address",
             password: "Password",
@@ -338,6 +339,7 @@ const translations = {
         },
         booking_equipment:
         {
+
             equipmentBookingDetails: "Equipment Booking Details",
             confirmed: "Confirmed",
             teacherInfo: "Teacher Information",
@@ -583,7 +585,7 @@ const translations = {
             building: "Здание",
             allBuildings: "Все здания",
             mainBuilding: "Главное здание",
-            building5: "Здание 5",
+            building5: "Здание №5",
             minCapacity: "Мин. вместимость",
             requiredEquipment: "Необходимое оборудование",
             anyEquipment: "Любое оборудование",
@@ -783,11 +785,11 @@ const translations = {
             dashboardType: "Դասասենյակների և սարքավորումների ամրագրումների արդյունավետ կառավարում",
             getStarted: "Սկսել",
             easyBooking: "Հեշտ ամրագրում",
-            easyBookingDesc: "Ամրագրեք դասասենյակները և սարքավորումները մի քանի կտտոցով",
+            easyBookingDesc: "Ամրագրեք դասասենյակները և սարքավորումները մի քանի կոճակով",
             secureAccess: "Ապահով մուտք",
             secureAccessDesc: "Դերը հիմնված մուտքը ապահովում է տվյալների անվտանգությունը",
             realTimeNotifications: "Պատասխանների ծանուցումներ",
-            realTimeNotificationsDesc: "Ստացեք անմիջական տեղեկություններ ձեր ամրագրումների մասին"
+            realTimeNotificationsDesc: "Ստացեք տեղեկություններ ձեր ամրագրումների մասին"
         },
         dashboard: {
             totalBookings: "Ընդհանուր ամրագրումներ",
@@ -831,14 +833,14 @@ const translations = {
             instructor: "Դասախոս",
             semester: "Սեմեստր",
             note: "Նշում՝",
-            noteText: "Այս դասացուցակներում օգտագործվող սենյակները ամրագրման համար հասանելի չեն իրենց նախատեսված ժամանակներում։"
+            noteText: "Այս դասացուցակներում օգտագործվող լսարանները ամրագրման համար հասանելի չեն նշված ժամանակներում։"
 
         },
         page: {
             dashboardTitle: "Վահանակ - MetaClass"
         },
         departments: {
-            cs: "Համակարգչային գիտություններ",
+            cs: "Համակարգչային տեխնոլոգիաներ",
             physics: "Ֆիզիկա"
         },
         days: {
@@ -846,8 +848,8 @@ const translations = {
             wednesday: "Չորեքշաբթի"
         },
         rooms: {
-            room201: "Սենյակ 201 - Ճարտարագիտական շենք",
-            room102: "Սենյակ 102 - Գիտական շենք"
+            room201: "Սենյակ 201 - Ճարտարագիտական մասնաշենք",
+            room102: "Սենյակ 102 - Գիտական մասնաշենք"
         },
         nav: {
             dashboard: "Վահանակ",
@@ -860,7 +862,7 @@ const translations = {
             panel: "Ադմին Վահանակ",
             manageUsers: "Օգտատերերի կառավարում",
             manageBookings: "Կառավարել ամրագրումները",
-            classrooms: "Դասարաններ",
+            classrooms: "Լսարաններ",
             equipment: "Սարքավորումներ",
             schedules: "Ժամանակացույցեր",
             manageUsersDesc: "Ավելացնել, խմբագրել կամ ջնջել օգտատերերին և վերականգնել գաղտնաբառերը",
@@ -915,7 +917,7 @@ const translations = {
             
             projector: "Պրոյեկտոր",
             pc: "Համակարգիչ",
-            labMicroscope: "Լաբորատոր դասարանի մանրադիտակ",
+            labMicroscope: "Լաբորատոր լսարանի մանրադիտակ",
             
             avEquipment: "Աուդիո-տեսա սարքավորումներ",
             computer: "Համակարգիչ",
@@ -943,7 +945,7 @@ const translations = {
         user: {
             manageUsers: "Օգտատերերի կառավարում",
             addUser: "Ավելացնել նոր օգտատեր",
-            fullName: "Ամբողջ անուն",
+            fullName: "Անուն ազգանուն",
             email: "Էլ․ փոստ",
             role: "Դեր",
             actions: "Գործողություններ",
@@ -973,8 +975,8 @@ const translations = {
             searchClassrooms: "Փնտրել հասանելի դասասենյակներ",
             building: "Շինություն",
             allBuildings: "Բոլոր շենքերը",
-            mainBuilding: "Հիմնական շենք",
-            building5: "Շենք 5",
+            mainBuilding: "Գլխավոր մասնաշենք",
+            building5: "Մասնաշենք №5",
             minCapacity: "Նվազագույն տեղակայում",
             requiredEquipment: "Պահանջվող սարքավորում",
             anyEquipment: "Ցանկացած սարքավորում",
@@ -984,36 +986,39 @@ const translations = {
             selectEquipment: "Ընտրել սարքավորում",
             quantity: "Քանակ",
             optional: "Ընտրովի",
+            buildingOptional: "Մասնաշենք (ոչ պարտադիր)",
+            classroomOptional: "Լսարան (ոչ պարտադիր)",
             notes: "Նշումներ",
             createBookingBtn: "Ստեղծել ամրագրում",
             cancelBtn: "Չեղարկել",
+            equipmentSelect: "Ընտրել սարքավորում",
             myBookings: {
-                pageTitle: "Իմ պատվերները",
+                pageTitle: "Իմ ամրագրումները",
                 brandText: "METACLASS",
                 dashboard: "Վահանակ",
-                newBooking: "Նոր պատվեր",
+                newBooking: "Նոր ամրագրում",
                 admin: "Ադմին",
                 adminPanel: "Ադմին վահանակ",
                 manageUsers: "Օգտագործողների կառավարում",
                 classrooms: "Դասասենյակներ",
                 schedules: "Ժամանակացույցեր",
-                equipment: "Ապարատավորում",
+                equipment: "Սարքավորումներ",
                 account: "Հաշիվ",
-                darkLightMode: "Մուգ/Արագի ռեժիմ",
+                darkLightMode: "Մուգ/Լուսավոր ռեժիմ",
                 changePassword: "Փոխել գաղտնաբառը",
                 logout: "Ելք",
-                bookingCreated: "Պատվերը հաջողությամբ ստեղծվել է։",
+                bookingCreated: "Ամրագրումը հաջողությամբ ստեղծվել է։",
                 filterAll: "Բոլորը",
                 filterPending: "Սպասման մեջ",
                 filterConfirmed: "Հաստատված",
                 filterRejected: "Մերժված",
-                classroomBooking: "Դասասենյակի պատվեր",
-                equipmentBooking: "Ապարատավորման պատվեր",
+                classroomBooking: "Լսարանի ամրագրում",
+                equipmentBooking: "Սարքավորման ամրագրում",
                 statusPending: "Սպասման մեջ",
                 statusConfirmed: "Հաստատված",
                 location: "Հասցե",
                 capacity: "Տարողություն։ ",
-                equipment: "Ապարատավորում:",
+                equipment: "Սարքավորում:",
                 students: "ուսանողներ",
                 details: "Մանրամասներ",
                 approve: "Հաստատել",
@@ -1021,7 +1026,7 @@ const translations = {
                 cancel: "Չեղարկել",
                 created: "Ստեղծվել է: Նոյ 17, 2025",
                 forClassroom: "Դասասենյակի համար:",
-                university: "MetaClass Համալսարանի Պատվերի Համակարգ",
+                university: "MetaClass Համալսարանի Ամրագրման Համակարգ",
                 poweredBy: "Նախագծված է MetaClass տեխնոլոգիայով"
             }
         },
@@ -1034,11 +1039,11 @@ const translations = {
         },
         login: {
             pageTitle: "Մուտք - MetaClass",
-            welcomeBack: "Բարի վերադարձ",
+            welcomeBack: "Բարի գալուստ",
             signInAccess: "Մուտք գործեք՝ ձեր հաշիվը հասանելի դարձնելու համար",
             emailAddress: "Էլ․ փոստ",
             password: "Գաղտնաբառ",
-            rememberMe: "Հիշել ինձ այս սարքում",
+            rememberMe: "Հիշել այս սարքում",
             signIn: "Մուտք գործել",
             forgotPassword: "Մոռացել եք գաղտնաբառը?"
         },
@@ -1093,13 +1098,13 @@ const translations = {
             email: "Էլ. հասցե",
             bookingInfo: "Ամրագրման տեղեկություններ",
             type: "Տեսակ",
-            classroom: "Դասարան",
+            classroom: "Լսարան",
             date: "Ամսաթիվ",
             time: "Ժամանակ",
             status: "Կարգավիճակ",
             created: "Ստեղծվել է",
             lastUpdated: "Վերջին թարմացում",
-            building: "Շենք",
+            building: "Մասնաշենք",
             roomNumber: "Սենյակի համար",
             capacity: "Համարողություն",
             availableEquipment: "Ստացվող սարքավորումներ",
@@ -1134,7 +1139,7 @@ const translations = {
             equipmentName: "Սարքավորման անունը",
             quantityRequested: "Պահանջվող քանակ",
             totalAvailable: "Ընդհանուր առկա",
-            forClassroom: "Դասարանի համար",
+            forClassroom: "Լսարանի համար",
             additionalNotes: "Լրացուցիչ նշումներ",
             backToList: "Հետ դառնալ ցուցակ",
             emailNotificationsPending: "Էլ. փոստի ծանուցումները սպասման մեջ են"
