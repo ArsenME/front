@@ -1,6 +1,8 @@
 
 document.getElementById("year").innerText = new Date().getFullYear();
 
+ 
+
 // FORM VALIDATION + SUBMIT
 document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -135,7 +137,4 @@ if (localStorage.getItem("isLoggedIn") == "user") {
         alert(translations[localStorage.language].changePassword.success);
     });
 
-
-    // Set year automatically
-   
     

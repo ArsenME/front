@@ -1098,3 +1098,18 @@ body.login-page {
     font-weight: 600;
     border-radius: 10px;
 }
+.modal-content {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.modal-header,
+.modal-footer {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.modal-body {
+    background: var(--bg-primary) !important;
+}

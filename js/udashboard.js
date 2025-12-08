@@ -1,8 +1,7 @@
 // ================================
 // Test Data
 // ================================
-
-const userFullName = "John Lee";
+const userFullName = "James Bond";
 
 const stats = {
     pendingBookings: 1,
@@ -19,7 +18,6 @@ const recentBookings = [
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
-        user: { fullName: "John Lee" },
         quantity: null
     },
     {
@@ -30,7 +28,6 @@ const recentBookings = [
         date: "2025-11-18",
         startTime: "10:00",
         endTime: "12:00",
-        user: { fullName: "John Lee" },
         quantity: 3
     }
 ];
@@ -152,7 +149,6 @@ function renderRecentBookings() {
                     </div>
 
                     <div class="booking-card-body">
-                        <p><i class="fas fa-user"></i> <strong>${t("dashboard.teacher")}:</strong> ${getTranslatedName(b.user.fullName)}</p>
                         <p><i class="fas fa-calendar"></i> <strong>${t("dashboard.date")}:</strong> ${b.date}</p>
                         <p><i class="fas fa-clock"></i> <strong>${t("dashboard.time")}:</strong> ${b.startTime} - ${b.endTime}</p>
                         ${b.type === "Equipment" ? `<p><i class="fas fa-boxes"></i> <strong>${t("dashboard.quantity")}:</strong> ${b.quantity}</p>` : ""}
@@ -160,14 +156,7 @@ function renderRecentBookings() {
 
                     <div class="booking-card-footer">
                         ${
-                            b.status === "Pending"
-                                ? `<button class="btn btn-sm btn-success" onclick="approve(${b.id})">
-                                        <i class="fas fa-check"></i> ${t("dashboard.approve")}
-                                   </button>
-                                   <button class="btn btn-sm btn-danger" onclick="showRejectModal(${b.id})">
-                                        <i class="fas fa-times"></i> ${t("dashboard.reject")}
-                                   </button>`
-                                : `<button class="btn btn-sm btn-warning" onclick="showCancelModal(${b.id})">
+                            `<button class="btn btn-sm btn-warning" onclick="showCancelModal(${b.id})">
                                         <i class="fas fa-ban"></i> ${t("dashboard.cancel")}
                                    </button>`
                         }
@@ -182,18 +171,8 @@ function renderRecentBookings() {
 
 
 // ================================
-// Approve / Reject / Cancel
+//  Cancel
 // ================================
-
-function approve(id) {
-    showAlert("success", t("dashboard.alertApproved"));
-}
-
-function showRejectModal(id) {
-    document.getElementById("rejectBookingId").value = id;
-    new bootstrap.Modal(document.getElementById("rejectModal")).show();
-}
-
 function showCancelModal(id) {
     document.getElementById("rejectBookingId").value = id;
     new bootstrap.Modal(document.getElementById("cancelModal")).show();
