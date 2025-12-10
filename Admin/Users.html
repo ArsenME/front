@@ -104,14 +104,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Example admin -->
+                            <tr>
+                                <td>
+                                    <i class="fas fa-user-circle text-primary me-2"></i>
+                                    <span class="user-name" data-name="System Admin">System Admin</span>
+                                </td>
+                                <td>sys.admin@example.com</td>
+                                <td><span class="badge bg-danger" data-translate="roles.admin">Admin</span></td>
+                                <td class="text-end">
+                                    <a href="./EditUser.html" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-edit"></i> <span data-translate="user.edit">Edit</span>
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-warning" onclick="alert('Reset Password')">
+                                        <i class="fas fa-key"></i> <span data-translate="user.reset">Reset</span>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="alert('Delete User')">
+                                        <i class="fas fa-trash"></i> <span data-translate="user.delete">Delete</span>
+                                    </button>
+                                </td>
+                            </tr>
+
                             <!-- Example User 1 -->
                             <tr>
                                 <td>
                                     <i class="fas fa-user-circle text-primary me-2"></i>
-                                    <span class="user-name" data-name="John Doe">John Doe</span>
+                                    <span class="user-name" data-name="James Bond">James Bond</span>
                                 </td>
-                                <td>john@example.com</td>
-                                <td><span class="badge bg-danger" data-translate="roles.admin">Admin</span></td>
+                                <td>bond@example.com</td>
+                                <td><span class="badge bg-primary" data-translate="roles.user">User</span></td>
                                 <td class="text-end">
                                     <a href="./EditUser.html" class="btn btn-sm btn-outline-primary">
                                         <i class="fas fa-edit"></i> <span data-translate="user.edit">Edit</span>
@@ -129,9 +150,9 @@
                             <tr>
                                 <td>
                                     <i class="fas fa-user-circle text-primary me-2"></i>
-                                    <span class="user-name" data-name="Anna Petrova">Anna Petrova</span>
+                                    <span class="user-name" data-name="Albus Dumbledore">Albus Dumbledore</span>
                                 </td>
-                                <td>anna@example.com</td>
+                                <td>albus@example.com</td>
                                 <td><span class="badge bg-primary" data-translate="roles.user">User</span></td>
                                 <td class="text-end">
                                     <a href="#" class="btn btn-sm btn-outline-primary">

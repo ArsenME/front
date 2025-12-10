@@ -1,7 +1,7 @@
 // ================================
 // Test Data
 // ================================
-const userFullName = "James Bond";
+const userFullName = "Albus Dumbledore";
 
 const stats = {
     pendingBookings: 1,

@@ -145,11 +145,11 @@ main {
 }
 
 .status-btn.active {
-    background-color: #198754; /* зелёный */
+    background-color: #198754;
 }
 
 .status-btn.inactive {
-    background-color: #dc3545; /* красный */
+    background-color: #dc3545;
 }
 .btn-metaclass-orange {
     background: linear-gradient(135deg, var(--accent-orange) 0%, #e06b00 100%);
@@ -709,7 +709,7 @@ body.login-page {
     justify-content: center;
     position: relative;
     padding: 0.5rem;
-    padding-top: 1rem; /* Reduced top padding to move card higher */
+    padding-top: 1rem;
     overflow: hidden;
 }
 
@@ -744,7 +744,7 @@ body.login-page {
         max-width: 360px;
         padding: 0.5rem;
         margin: 0 auto;
-        margin-top: 0.5rem; /* Reduced margin to move card higher */
+        margin-top: 0.5rem;
     }
 
     body.login-page .login-card {
@@ -785,7 +785,6 @@ body.login-page {
         line-height: 1.3;
     }
 
-    /* Input groups specifically for login page */
     body.login-page .input-group {
         border-radius: 6px;
         overflow: hidden;
@@ -882,17 +881,16 @@ body.login-page {
         padding: 0 0.5rem;
     }
 
-/* Login Page Responsive */
 @media (max-width: 480px) {
     body.login-page {
         padding: 0.25rem;
-        padding-top: 0.5rem; /* Even less padding on mobile */
+        padding-top: 0.5rem;
     }
 
         body.login-page .login-container {
             padding: 0.25rem;
             max-width: 100%;
-            margin-top: 0.25rem; /* Even less margin on mobile */
+            margin-top: 0.25rem;
         }
 
         body.login-page .login-card {
@@ -907,12 +905,12 @@ body.login-page {
 @media (max-height: 700px) {
     body.login-page {
         align-items: flex-start;
-        padding-top: 0.5rem; /* Less padding for short screens */
+        padding-top: 0.5rem;
         overflow-y: auto;
     }
 
         body.login-page .login-container {
-            margin: 0.25rem auto; /* Less margin for short screens */
+            margin: 0.25rem auto;
         }
 
         body.login-page .login-card {
@@ -979,7 +977,6 @@ body.login-page {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Enhanced text visibility for dark mode */
 [data-theme="dark"] .text-muted {
     color: var(--text-muted) !important;
 }

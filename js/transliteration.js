@@ -12,8 +12,6 @@ toRu: function (text) {
     for (let ch of text) {
         const lower = ch.toLowerCase();
         const translated = map[lower] || ch;
-
-        // Preserve uppercase letter
         result += (ch === ch.toUpperCase() && lower !== ch)
             ? translated.charAt(0).toUpperCase() + translated.slice(1)
             : translated;
@@ -26,7 +24,6 @@ toHy: function (text) {
     const map = {
         tch: 'ճ',
 
-    // 2-letter combos
     zh: 'ժ',
     kh: 'խ',
     ts: 'ծ',
@@ -36,26 +33,25 @@ toHy: function (text) {
     ch: 'չ',
     rr: 'ռ',
 
-    // 1-letter matches
     a: 'ա',
     b: 'բ',
     g: 'գ',
     d: 'դ',
-    e: 'ե',   // also 'է'
+    e: 'ե',
     z: 'զ',
-    y: 'յ',   // also 'ը'
+    y: 'յ',
     i: 'ի',
     l: 'լ',
-    k: 'կ',   // also 'ք'
+    k: 'կ',
     h: 'հ',
     m: 'մ',
     n: 'ն',
-    o: 'ո',   // also 'օ'
-    p: 'պ',   // also 'փ'
+    o: 'ո',
+    p: 'պ',
     j: 'ջ',
     s: 'ս',
     v: 'վ',
-    t: 'տ',   // also 'թ'
+    t: 'տ',
     r: 'ր',
     c: 'ց',
     u: 'ւ',

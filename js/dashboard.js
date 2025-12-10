@@ -1,7 +1,7 @@
 // ================================
 // Test Data
 // ================================
-const userFullName = "System administrator";
+const userFullName = "Admin";
 
 const stats = {
     totalBookings: 120,
@@ -13,9 +13,9 @@ const stats = {
 };
 
 const recentBookings = [
-    { id: 1, status: "Pending", type: "Classroom", classroom: { roomNumber: "301" }, date: "2025-11-18", startTime: "10:00", endTime: "12:00", user: { fullName: "Dr. Lee" }, quantity: null },
-    { id: 2, status: "Pending", type: "Classroom", classroom: { roomNumber: "301" }, date: "2025-11-18", startTime: "10:00", endTime: "12:00", user: { fullName: "Pr. James" }, quantity: null },
-    { id: 3, status: "Confirmed", type: "Equipment", equipment: { name: "PC" }, date: "2025-11-18", startTime: "10:00", endTime: "12:00", user: { fullName: "Dr. Lee" }, quantity: 3 }
+    { id: 1, status: "Pending", type: "Classroom", classroom: { roomNumber: "301" }, date: "2025-11-18", startTime: "10:00", endTime: "12:00", user: { fullName: "Albus Dumbledore" }, quantity: null },
+    { id: 2, status: "Pending", type: "Classroom", classroom: { roomNumber: "301" }, date: "2025-11-18", startTime: "10:00", endTime: "12:00", user: { fullName: "James Bond" }, quantity: null },
+    { id: 3, status: "Confirmed", type: "Equipment", equipment: { name: "PC" }, date: "2025-11-18", startTime: "10:00", endTime: "12:00", user: { fullName: "Albus Dumbledore" }, quantity: 3 }
 ];
 
 // ================================

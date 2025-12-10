@@ -138,10 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
             translatePage(this.value);
         });
     
-        // Initialize default language
         translatePage('en');
     
-        // Form Validation
         document.getElementById("createUserForm").addEventListener("submit", function (e) {
             e.preventDefault();
     

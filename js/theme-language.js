@@ -39,19 +39,13 @@ $(document).ready(function () {
 
     const savedLanguage = localStorage.getItem('language') || 'en';
     $('#languageSelect').val(savedLanguage);
-
-    // Apply language instantly using translations.js
     applyLanguage(savedLanguage);
 
     $('#languageSelect').change(function () {
         const selectedLanguage = $(this).val();
 
         localStorage.setItem('language', selectedLanguage);
-
-        // Apply translation without reloading page
         applyLanguage(selectedLanguage);
-
-        // Save preference to server
         saveLanguagePreference(selectedLanguage);
     });
 
